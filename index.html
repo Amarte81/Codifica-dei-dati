@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
@@ -1732,9 +1732,6 @@
                 </div>
               </div>
 
-              <!-- STATISTICHE PESO IN MEMORIA -->
-              <div id="cristaldiStatsFormula" class="formula-box" style="font-size:0.8rem;"></div>
-
               <!-- CARICA FOTO PERSONALIZZATA -->
               <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.45rem; margin-top:0.55rem;">
                 <label class="btn btn-sm" style="cursor:pointer;">
@@ -1746,7 +1743,7 @@
             </div>
           </div>
 
-          <!-- COLONNA DOPPIO CANVAS + ISPEZIONATORE PIXEL -->
+          <!-- COLONNA DOPPIO CANVAS + CALCOLO PESO SOTTO LA FOTO CAMPIONATA E QUANTIZZATA + ISPEZIONATORE PIXEL -->
           <div>
             <div class="cristaldi-lab-grid">
               <div class="cristaldi-canvas-card">
@@ -1755,8 +1752,14 @@
                   <span style="color:var(--accent);">Prof. Marco Rosario Cristaldi</span>
                 </div>
                 <canvas id="canvasCristaldiOrig" width="320" height="320"></canvas>
-                <div style="font-size:0.72rem; color:var(--text-muted); margin-top:0.3rem;">
-                  Rif. 320×320 px • 24 bit (307,2 KB)
+                <div style="font-size:0.74rem; color:var(--accent); font-weight:700; margin-top:0.35rem;">
+                  Rif. Originale: 320×320 px • 24 bit (307.200 Byte / 300,00 KiB)
+                </div>
+                <div class="formula-box" style="font-size:0.74rem; text-align:left; margin-top:0.35rem; margin-bottom:0; padding:0.48rem 0.6rem;">
+                  <strong>📐 Riferimento Originale Non Compresso:</strong><br>
+                  Campioni = 320 × 320 = <strong>102.400 pixel</strong><br>
+                  Quantizzazione = <strong>24 bit/pixel</strong> (16.777.216 colori)<br>
+                  Peso = (102.400 × 24 bit) / 8 = <strong style="color:var(--accent);">307.200 Byte (300,00 KiB)</strong>
                 </div>
               </div>
 
@@ -1766,9 +1769,11 @@
                   <span id="cristaldiOutSubLabel" style="color:var(--text-main);">64×64 px • 6 bit/pixel</span>
                 </div>
                 <canvas id="canvasCristaldiQuant" width="320" height="320" title="Passa il mouse o tocca un punto per leggere i bit del campione!"></canvas>
-                <div id="cristaldiOutSizeLabel" style="font-size:0.72rem; color:var(--bin-green); font-weight:700; margin-top:0.3rem;">
+                <div id="cristaldiOutSizeLabel" style="font-size:0.74rem; color:var(--bin-green); font-weight:700; margin-top:0.35rem;">
                   Peso: 3.072 Byte (3,00 KiB)
                 </div>
+                <!-- STATISTICHE E CALCOLO PESO IN MEMORIA SOTTO LA FOTO CAMPIONATA E QUANTIZZATA -->
+                <div id="cristaldiStatsFormula" class="formula-box" style="font-size:0.74rem; text-align:left; margin-top:0.35rem; margin-bottom:0; padding:0.48rem 0.6rem;"></div>
               </div>
             </div>
 
@@ -4378,19 +4383,33 @@
   }
 
   function initCristaldiPortrait() {
-    drawFallbackCristaldiPortrait(refCristaldiCtx);
-    syncOrigCristaldiCanvas();
-    updateCristaldiImageLab();
+    const applyLoadedImage = (img) => {
+      refCristaldiCtx.clearRect(0, 0, 320, 320);
+      const side = Math.min(img.width || 320, img.height || 320);
+      const sx = ((img.width || 320) - side) / 2;
+      const sy = ((img.height || 320) - side) / 2;
+      refCristaldiCtx.drawImage(img, sx, sy, side, side, 0, 0, 320, 320);
+      syncOrigCristaldiCanvas();
+      updateCristaldiImageLab();
+    };
 
+    // 1. Carica subito il Data URI Base64 aggiornato (funziona 100% offline su file:// senza CORS)
     if (PROF_CRISTALDI_DATA_URI && PROF_CRISTALDI_DATA_URI.startsWith('data:image/')) {
-      const img = new Image();
-      img.onload = () => {
-        refCristaldiCtx.clearRect(0, 0, 320, 320);
-        refCristaldiCtx.drawImage(img, 0, 0, 320, 320);
-        syncOrigCristaldiCanvas();
-        updateCristaldiImageLab();
-      };
-      img.src = PROF_CRISTALDI_DATA_URI;
+      const imgData = new Image();
+      imgData.onload = () => applyLoadedImage(imgData);
+      imgData.src = PROF_CRISTALDI_DATA_URI;
+    } else {
+      drawFallbackCristaldiPortrait(refCristaldiCtx);
+      syncOrigCristaldiCanvas();
+      updateCristaldiImageLab();
+    }
+
+    // 2. Se servito via HTTP/HTTPS (es. GitHub Pages o server locale), ricarica anche prof-cristaldi.jpg con cache-busting
+    if (window.location.protocol === 'http:' || window.location.protocol === 'https:') {
+      const imgFile = new Image();
+      imgFile.crossOrigin = 'anonymous';
+      imgFile.onload = () => applyLoadedImage(imgFile);
+      imgFile.src = 'prof-cristaldi.jpg?v=' + Date.now();
     }
   }
 
@@ -4428,7 +4447,7 @@
   }
 
   function quantizeChannelValue(val255, levels) {
-    if (levels >= 256) return val255;
+    if (levels >= 256) return { qVal: val255, qIdx: val255 };
     const qIdx = Math.min(levels - 1, Math.floor((val255 / 256) * levels));
     const qVal = Math.round((qIdx / (levels - 1)) * 255);
     return { qVal, qIdx };
@@ -4547,12 +4566,13 @@
     const ratio = (totalBytes / origBytes) * 100;
 
     document.getElementById('cristaldiOutSizeLabel').textContent =
-      `Peso: ${totalBytes.toLocaleString('it-IT')} Byte (${(totalBytes / 1024).toFixed(2)} KiB)`;
+      `Peso: ${totalBytes.toLocaleString('it-IT')} Byte (${(totalBytes / 1024).toFixed(2)} KiB) — [${ratio.toFixed(1)}% dell'originale]`;
 
     document.getElementById('cristaldiStatsFormula').innerHTML = `
       <strong>📐 Calcolo Peso Immagine Prof. Cristaldi:</strong><br>
-      Campioni = ${gridN} × ${gridN} = <strong>${totalPixels.toLocaleString('it-IT')} pixel</strong> &nbsp;|&nbsp; Quantizzazione = <strong>${bpp} bit/pixel</strong> (${Math.pow(2, bpp).toLocaleString('it-IT')} livelli)<br>
-      Dimensione = (${totalPixels.toLocaleString('it-IT')} × ${bpp} bit) / 8 = <strong style="color:var(--bin-green);">${totalBytes.toLocaleString('it-IT')} Byte (${(totalBytes / 1024).toFixed(2)} KiB)</strong> &nbsp;[${ratio.toFixed(1)}% dell'originale]
+      Campioni = ${gridN} × ${gridN} = <strong>${totalPixels.toLocaleString('it-IT')} pixel</strong><br>
+      Quantizzazione = <strong>${bpp} bit/pixel</strong> (${Math.pow(2, bpp).toLocaleString('it-IT')} livelli)<br>
+      Peso = (${totalPixels.toLocaleString('it-IT')} × ${bpp} bit) / 8 = <strong style="color:var(--bin-green);">${totalBytes.toLocaleString('it-IT')} Byte (${(totalBytes / 1024).toFixed(2)} KiB)</strong>
     `;
   }
 
