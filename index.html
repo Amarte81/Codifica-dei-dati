@@ -1807,12 +1807,6 @@
                   <span>256×256</span>
                   <span>320×320 (Max)</span>
                 </div>
-                <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-top:0.45rem;">
-                  <label style="font-size:0.8rem; display:inline-flex; align-items:center; gap:0.35rem; cursor:pointer;">
-                    <input type="checkbox" id="cristaldiShowGrid" checked onchange="updateCristaldiImageLab()">
-                    🔲 Mostra Griglia dei Campioni (Pixel)
-                  </label>
-                </div>
               </div>
 
               <!-- 2. SLIDER QUANTIZZAZIONE COLORE -->
@@ -1884,17 +1878,6 @@
                 </div>
                 <!-- STATISTICHE E CALCOLO PESO IN MEMORIA SOTTO LA FOTO CAMPIONATA E QUANTIZZATA -->
                 <div id="cristaldiStatsFormula" class="formula-box" style="font-size:0.74rem; text-align:left; margin-top:0.35rem; margin-bottom:0; padding:0.48rem 0.6rem;"></div>
-              </div>
-            </div>
-
-            <!-- LENTE ISPEZIONA PIXEL -->
-            <div class="pixel-inspector-bar" id="cristaldiPixelInspector">
-              <div style="display:flex; align-items:center; gap:0.5rem;">
-                <span class="color-swatch-box" id="inspectorColorSwatch" style="background:#38bdf8;"></span>
-                <div>
-                  <div style="font-weight:800; color:var(--accent);" id="inspectorCoordText">🔬 Tocca o muovi il mouse sull'immagine per ispezionare un campione!</div>
-                  <div style="color:#cbd5e1;" id="inspectorBitsText">Codifica binaria pixel: <code>01101100</code></div>
-                </div>
               </div>
             </div>
           </div>
@@ -4578,7 +4561,8 @@
     const sliderIdx = parseInt(document.getElementById('cristaldiSamplingSlider').value, 10) || 3;
     const gridN = resolutions[sliderIdx] || 64;
     const quantMode = document.getElementById('cristaldiQuantSelect').value;
-    const showGrid = document.getElementById('cristaldiShowGrid').checked;
+    const showGridEl = document.getElementById('cristaldiShowGrid');
+    const showGrid = showGridEl ? showGridEl.checked : false;
 
     const srcData = refCristaldiCtx.getImageData(0, 0, 320, 320).data;
 
@@ -4598,7 +4582,7 @@
     cristaldiState.bpp = bpp;
     cristaldiState.sampledPixels = [];
 
-    document.getElementById('cristaldiResBadge').textContent = `${gridN} × ${gridN} px (${(gridN * gridN).toLocaleString('it-IT')} campioni)`;
+    document.getElementById('cristaldiResBadge').textContent = `${gridN} × ${gridN} px (${(gridN * gridN).toLocaleString('it-IT')} px)`;
     document.getElementById('cristaldiBitBadge').textContent = modeDesc;
     document.getElementById('cristaldiOutSubLabel').textContent = `${gridN}×${gridN} px • ${bpp} bit/pixel`;
 
@@ -4701,10 +4685,15 @@
     const px = cristaldiState.sampledPixels[gy][gx];
     const hex = '#' + [px.qr, px.qg, px.qb].map(v => v.toString(16).toUpperCase().padStart(2, '0')).join('');
 
-    document.getElementById('inspectorColorSwatch').style.background = hex;
-    document.getElementById('inspectorCoordText').innerHTML =
+    const swatch = document.getElementById('inspectorColorSwatch');
+    const coordText = document.getElementById('inspectorCoordText');
+    const bitsText = document.getElementById('inspectorBitsText');
+    if (!swatch || !coordText || !bitsText) return;
+
+    swatch.style.background = hex;
+    coordText.innerHTML =
       `📍 Campione Pixel <code>(x=${gx}, y=${gy})</code> su griglia ${gridN}×${gridN} • RGB(${px.qr}, ${px.qg}, ${px.qb}) • <code>${hex}</code>`;
-    document.getElementById('inspectorBitsText').innerHTML =
+    bitsText.innerHTML =
       `Parola Binaria (${cristaldiState.bpp} bit): <code style="color:var(--bin-green); font-weight:900;">${px.binCode}</code>`;
   }
 
