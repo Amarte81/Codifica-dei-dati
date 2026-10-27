@@ -84,6 +84,8 @@
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
+      overflow-x: clip;
+      overflow-y: auto;
     }
 
     body {
@@ -93,7 +95,8 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      overflow-x: clip;
+      overflow-y: visible;
       line-height: 1.55;
     }
 
@@ -112,7 +115,7 @@
       min-height: 852px;
       border: 8px solid #334155;
       border-radius: 36px;
-      overflow-x: hidden;
+      overflow-x: clip;
       background: var(--bg-primary);
       box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8);
       display: flex;
@@ -123,7 +126,6 @@
     .app-shell {
       width: 100%;
       max-width: 100vw;
-      overflow-x: hidden;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -465,7 +467,6 @@
       padding: 1.15rem 1.25rem 3.5rem;
       width: 100%;
       max-width: 100vw;
-      overflow-x: hidden;
     }
 
     .view-section {
@@ -730,6 +731,11 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+    }
+
+    .canvas-frame canvas,
+    canvas {
+      touch-action: pan-y;
     }
 
     .canvas-frame canvas {
@@ -1131,7 +1137,25 @@
       }
     }
 
-    @media (max-width: 768px) {
+    /* MODALITÀ SCROLL CONTINUO FORZATA ANCHE SU PC 16:9 */
+    body.force-scroll-mode .mobile-scroll-notice {
+      display: flex;
+    }
+    body.force-scroll-mode #viewSlides .slide {
+      display: block !important;
+      margin-bottom: 1.35rem;
+    }
+    body.force-scroll-mode #viewSlides .slide.active {
+      border-color: var(--accent);
+    }
+    body.force-scroll-mode footer.bottom-footer .pc-only-slide-nav {
+      display: none !important;
+    }
+    body.force-scroll-mode footer.bottom-footer .mobile-only-scroll-nav {
+      display: flex !important;
+    }
+
+    @media (max-width: 920px), (max-aspect-ratio: 1/1) {
       header.top-header {
         padding: 0.48rem 0.65rem;
         gap: 0.4rem;
@@ -1284,8 +1308,11 @@
     </div>
 
     <div class="nav-controls">
+      <button class="btn btn-sm" id="btnScrollMode" onclick="toggleScrollMode()" title="Attiva/Disattiva lo Scroll Continuo su tutte le slide">
+        📜 Scroll Continuo
+      </button>
       <button class="btn btn-sm" id="btnPhoneSim" onclick="togglePhoneSim()" title="Simula schermo smartphone 6 pollici (9:16) con Scroll Continuo">
-        📱 Vista 9:16 (Scroll)
+        📱 Vista 9:16
       </button>
       <button class="btn btn-sm" onclick="openIndexModal()" title="Apri Indice Completo">
         📑 Indice
@@ -3944,7 +3971,10 @@
   const slideCounterText = document.getElementById('slideCounterText');
 
   function isContinuousScrollMode() {
-    return window.innerWidth <= 768 || document.body.classList.contains('simulate-phone-9-16');
+    return window.innerWidth <= 920 ||
+           window.innerHeight > window.innerWidth ||
+           document.body.classList.contains('simulate-phone-9-16') ||
+           document.body.classList.contains('force-scroll-mode');
   }
 
   // =========================================================================
@@ -5761,17 +5791,23 @@
     requestAnimationFrame(drawFpsArenaFrame);
   }
 
+  function centerActivePillHorizontally(idx) {
+    const pills = quickJumpBar.querySelectorAll('.module-pill');
+    pills.forEach((p, i) => {
+      const isActive = (i === idx);
+      p.classList.toggle('active', isActive);
+      if (isActive) {
+        const targetLeft = p.offsetLeft - (quickJumpBar.clientWidth / 2) + (p.offsetWidth / 2);
+        quickJumpBar.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+      }
+    });
+  }
+
   function updateSlideUI() {
     slides.forEach((s, idx) => {
       s.classList.toggle('active', idx === currentSlide);
     });
-    const pills = quickJumpBar.querySelectorAll('.module-pill');
-    pills.forEach((p, idx) => {
-      p.classList.toggle('active', idx === currentSlide);
-      if (idx === currentSlide) {
-        p.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    });
+    centerActivePillHorizontally(currentSlide);
     const pct = ((currentSlide + 1) / slides.length) * 100;
     progressBar.style.width = pct + '%';
     slideCounterText.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
@@ -5887,21 +5923,35 @@
     }
   }
 
+  function toggleScrollMode() {
+    document.body.classList.toggle('force-scroll-mode');
+    const isScroll = document.body.classList.contains('force-scroll-mode');
+    const btn = document.getElementById('btnScrollMode');
+    if (btn) {
+      btn.textContent = isScroll ? '🎞️ Vista Slide Singole' : '📜 Scroll Continuo';
+    }
+    if (isScroll && slides[currentSlide]) {
+      slides[currentSlide].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (!isScroll) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
   function togglePhoneSim() {
     document.body.classList.toggle('simulate-phone-9-16');
     const isPhone = document.body.classList.contains('simulate-phone-9-16');
     const btn = document.getElementById('btnPhoneSim');
-    btn.textContent = isPhone ? '🖥️ Torna a Vista PC 16:9 (Slide)' : '📱 Vista 9:16 (Scroll)';
+    btn.textContent = isPhone ? '🖥️ Vista PC 16:9' : '📱 Vista 9:16';
   }
 
-  // Aggiorna automaticamente la pillola attiva durante lo scroll continuo da Telefono (9:16)
+  // Aggiorna la pillola attiva durante lo scroll continuo SENZA mai richiamare scrollIntoView sulla pagina!
   window.addEventListener('scroll', () => {
     if (currentMode !== 'slides' || !isContinuousScrollMode()) return;
     let bestIdx = 0;
     let bestDist = Infinity;
     slides.forEach((s, idx) => {
       const rect = s.getBoundingClientRect();
-      const dist = Math.abs(rect.top - 140);
+      const dist = Math.abs(rect.top - 150);
       if (dist < bestDist) {
         bestDist = dist;
         bestIdx = idx;
@@ -5909,7 +5959,40 @@
     });
     if (bestIdx !== currentSlide) {
       currentSlide = bestIdx;
-      updateSlideUI();
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === currentSlide);
+      });
+      centerActivePillHorizontally(currentSlide);
+      const pct = ((currentSlide + 1) / slides.length) * 100;
+      progressBar.style.width = pct + '%';
+      slideCounterText.textContent = `Slide ${currentSlide + 1} / ${slides.length}`;
+    }
+  }, { passive: true });
+
+  // Supporto rotellina mouse anche in modalità Slide PC (16:9): quando si arriva a fine/inizio slide, passa alla successiva/precedente
+  let lastWheelSlideTime = 0;
+  window.addEventListener('wheel', (e) => {
+    if (currentMode !== 'slides' || isContinuousScrollMode()) return;
+    if (document.getElementById('indexModal').classList.contains('active')) return;
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toUpperCase() : '';
+    if (['INPUT', 'SELECT', 'TEXTAREA'].includes(tag)) return;
+
+    const now = Date.now();
+    if (now - lastWheelSlideTime < 550) return;
+
+    const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+
+    if (e.deltaY > 45 && scrollTop >= maxScroll - 8) {
+      if (currentSlide < slides.length - 1) {
+        lastWheelSlideTime = now;
+        changeSlide(1);
+      }
+    } else if (e.deltaY < -45 && scrollTop <= 8) {
+      if (currentSlide > 0) {
+        lastWheelSlideTime = now;
+        changeSlide(-1);
+      }
     }
   }, { passive: true });
 
