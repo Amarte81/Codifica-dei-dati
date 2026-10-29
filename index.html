@@ -1580,13 +1580,13 @@
                   <strong>Dato vs Informazione:</strong> Il <em>dato</em> è il simbolo grezzo (es. <code>1000001</code>); l'<em>informazione</em> nasce quando applichiamo una <strong>regola di codifica</strong> (contesto): come intero vale <code>65₁₀</code>, come carattere ASCII è la lettera <code>'A'</code>, in un'immagine è la luminosità di un pixel!
                 </div>
                 <div class="concept-item bin-border">
-                  <strong>Quante informazioni con $n$ bit?</strong> Con una parola binaria di lunghezza fissa $n$ bit possiamo rappresentare esattamente:
+                  <strong>Quante informazioni con n bit?</strong> Con una parola binaria di lunghezza fissa n bit possiamo rappresentare esattamente:
                   <div class="formula-box" style="margin-top:0.35rem;">
                     M = 2ⁿ configurazioni distinte &nbsp;➔&nbsp; Con 8 bit (1 Byte) = 2⁸ = 256 valori (da 0 a 255)
                   </div>
                 </div>
                 <div class="concept-item orange-border">
-                  <strong>Problema inverso (Quanti bit servono per $M$ elementi?):</strong> Per codificare $M$ simboli diversi senza ambiguità servono almeno:
+                  <strong>Problema inverso (Quanti bit servono per M elementi?):</strong> Per codificare M simboli diversi senza ambiguità servono almeno:
                   <div class="formula-box" style="margin-top:0.35rem;">
                     n = ⌈ log₂(M) ⌉ bit &nbsp;&nbsp;(arrotondato sempre all'intero superiore!)
                   </div>
@@ -1598,10 +1598,10 @@
               <h3>🔤 La Codifica dei Caratteri (Testi)</h3>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>ASCII Standard (7 bit):</strong> usa 7 bit per carattere ($2^7 = 128$ codici, da <code>0</code> a <code>127</code>): cifre <code>'0'-'9'</code> (48–57), maiuscole <code>'A'-'Z'</code> (65–90), minuscole <code>'a'-'z'</code> (97–122) e caratteri di controllo.
+                  <strong>ASCII Standard (7 bit):</strong> usa 7 bit per carattere (27 = 128 codici, da <code>0</code> a <code>127</code>): cifre <code>'0'-'9'</code> (48–57), maiuscole <code>'A'-'Z'</code> (65–90), minuscole <code>'a'-'z'</code> (97–122) e caratteri di controllo.
                 </div>
                 <div class="concept-item oct-border">
-                  <strong>ASCII Esteso / ISO-8859-1 Latin1 (8 bit = 1 Byte):</strong> usa tutti gli 8 bit del byte ($2^8 = 256$ simboli) aggiungendo le lettere accentate europee (<code>à, è, ì, ò, ù</code>).
+                  <strong>ASCII Esteso / ISO-8859-1 Latin1 (8 bit = 1 Byte):</strong> usa tutti gli 8 bit del byte (28 = 256 simboli) aggiungendo le lettere accentate europee (<code>à, è, ì, ò, ù</code>).
                 </div>
                 <div class="concept-item hex-border">
                   <strong>Unicode &amp; UTF-8 (Lunghezza variabile 1–4 Byte):</strong> standard universale per tutti gli alfabeti del mondo + emoji (oltre 149.000 caratteri). <strong>UTF-8</strong> usa <strong>1 Byte</strong> per i caratteri ASCII standard, <strong>2 Byte</strong> per le lettere accentate (es. <code>è</code>) e <strong>4 Byte</strong> per le emoji (es. <code>🚀</code>).
@@ -1643,11 +1643,11 @@
 
               <div class="sim-control-group" style="margin-top: 0.75rem;">
                 <div class="sim-label-row">
-                  <span>🧮 Quanti bit $n$ servono per codificare $M$ elementi?</span>
+                  <span>🧮 Quanti bit n servono per codificare M elementi?</span>
                   <span id="bitCalcResultBadge" class="base-badge badge-oct">n = 8 bit (256 comb.)</span>
                 </div>
                 <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; margin-top:0.35rem;">
-                  <span style="font-size:0.82rem; color:var(--text-muted);">Numero oggetti $M$:</span>
+                  <span style="font-size:0.82rem; color:var(--text-muted);">Numero oggetti M:</span>
                   <input type="number" id="bitCalcInputM" class="answer-input" value="180" min="2" max="100000000" oninput="updateBitRequirementCalc()" style="max-width:130px; padding:0.35rem 0.6rem;">
                   <button class="btn btn-sm" onclick="document.getElementById('bitCalcInputM').value=26; updateBitRequirementCalc();">26 Lettere</button>
                   <button class="btn btn-sm" onclick="document.getElementById('bitCalcInputM').value=256; updateBitRequirementCalc();">256 Colori</button>
@@ -1793,7 +1793,7 @@
               <h3>🪜 Le 3 Fasi della Digitalizzazione (ADC)</h3>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>1. Campionamento (Sampling — Discretizzazione del Tempo/Spazio):</strong> si misura il valore del segnale analogico a intervalli regolari $T_c$ (periodo di campionamento). La <strong>frequenza di campionamento</strong> è:
+                  <strong>1. Campionamento (Sampling — Discretizzazione del Tempo/Spazio):</strong> si misura il valore del segnale analogico a intervalli regolari T<sub>c</sub> (periodo di campionamento). La <strong>frequenza di campionamento</strong> è:
                   <div class="formula-box" style="margin-top:0.3rem;">
                     fc = 1 / Tc &nbsp;[Hz = campioni al secondo]
                   </div>
@@ -1805,10 +1805,10 @@
                   </div>
                 </div>
                 <div class="concept-item bin-border">
-                  <strong>2. Quantizzazione (Discretizzazione dell'Ampiezza):</strong> ogni campione viene arrotondato al livello più vicino tra $L = 2^n$ livelli disponibili (dove $n$ è il numero di bit per campione). La differenza tra valore reale e valore arrotondato è l'<strong>Errore (o Rumore) di Quantizzazione</strong>.
+                  <strong>2. Quantizzazione (Discretizzazione dell'Ampiezza):</strong> ogni campione viene arrotondato al livello più vicino tra L = 2<sup>n</sup> livelli disponibili (dove n è il numero di bit per campione). La differenza tra valore reale e valore arrotondato è l'<strong>Errore (o Rumore) di Quantizzazione</strong>.
                 </div>
                 <div class="concept-item hex-border">
-                  <strong>3. Codifica Binaria (PCM):</strong> a ciascuno dei $2^n$ livelli viene associata la sua parola binaria di $n$ bit (da <code>00...0</code> a <code>11...1</code>).
+                  <strong>3. Codifica Binaria (PCM):</strong> a ciascuno dei 2<sup>n</sup> livelli viene associata la sua parola binaria di n bit (da <code>00...0</code> a <code>11...1</code>).
                 </div>
               </div>
             </div>
@@ -1825,14 +1825,14 @@
               <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem;">
                 <div class="sim-control-group" style="margin-bottom:0.5rem;">
                   <div class="sim-label-row">
-                    <span>⏱️ Campioni ($f_c$):</span>
+                    <span>⏱️ Campioni (f<sub>c</sub>):</span>
                     <span id="adcTheorySamplesVal" class="base-badge badge-dec">12 campioni</span>
                   </div>
                   <input type="range" id="adcTheorySamples" class="sim-slider" min="4" max="24" step="2" value="12" oninput="drawAdcTheoryCanvas()">
                 </div>
                 <div class="sim-control-group" style="margin-bottom:0.5rem;">
                   <div class="sim-label-row">
-                    <span>📏 Bit Quantizz. ($n$):</span>
+                    <span>📏 Bit Quantizz. (n):</span>
                     <span id="adcTheoryBitsVal" class="base-badge badge-bin">3 bit (8 liv.)</span>
                   </div>
                   <input type="range" id="adcTheoryBits" class="sim-slider" min="1" max="4" step="1" value="3" oninput="drawAdcTheoryCanvas()">
@@ -1880,7 +1880,7 @@
         </div>
         <h2 class="slide-title">Laboratorio Interattivo: Campionamento e Quantizzazione sull'Immagine del Prof. Cristaldi Marco Rosario</h2>
         <p class="slide-subtitle">
-          In un'immagine digitale il <strong>Campionamento spaziale</strong> divide la scena in una griglia di <strong>Pixel ($W \times H$)</strong>, mentre la <strong>Quantizzazione cromatica</strong> stabilisce quanti <strong>bit per pixel (bpp)</strong> usare per rappresentare le sfumature di colore. Prova a modificarli qui sotto!
+          In un'immagine digitale il <strong>Campionamento spaziale</strong> divide la scena in una griglia di <strong>Pixel (W × H)</strong>, mentre la <strong>Quantizzazione cromatica</strong> stabilisce quanti <strong>bit per pixel (bpp)</strong> usare per rappresentare le sfumature di colore. Prova a modificarli qui sotto!
         </p>
 
         <div class="slide-split-16-9">
@@ -1895,7 +1895,7 @@
               <!-- 1. SLIDER CAMPIONAMENTO SPAZIALE -->
               <div class="sim-control-group">
                 <div class="sim-label-row">
-                  <span>1️⃣ <strong>Campionamento Spaziale</strong> (Risoluzione Griglia $W \times H$):</span>
+                  <span>1️⃣ <strong>Campionamento Spaziale</strong> (Risoluzione Griglia W × H):</span>
                   <span id="cristaldiResBadge" class="base-badge badge-dec">64 × 64 px (4.096 px)</span>
                 </div>
                 <input type="range" id="cristaldiSamplingSlider" class="sim-slider" min="0" max="6" step="1" value="3" oninput="updateCristaldiImageLab()">
@@ -2027,7 +2027,7 @@
               <h3>🖼️ 1. Immagini Raster (Bitmap) vs 📐 2. Immagini Vettoriali</h3>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>Immagini Raster (o Bitmap):</strong> sono una matrice fissa di pixel ($W \times H$). Ogni pixel memorizza il proprio colore:
+                  <strong>Immagini Raster (o Bitmap):</strong> sono una matrice fissa di pixel (W × H). Ogni pixel memorizza il proprio colore:
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
                     <li><strong>RGB (24 bit = 3 Byte/px):</strong> sintesi <em>additiva</em> per schermi (Rosso + Verde + Blu, 0–255 ciascuno).</li>
                     <li><strong>RGBA (32 bit = 4 Byte/px):</strong> aggiunge 8 bit di <strong>Canale Alpha</strong> (trasparenza/opacità).</li>
@@ -2037,7 +2037,7 @@
                 <div class="concept-item bin-border">
                   <strong>Immagini Vettoriali (Intro):</strong> non salvano i singoli pixel, ma <strong>formule matematiche e primitive geometriche</strong> (coordinate di punti, segmenti, cerchi, poligoni, <em>curve di Bézier</em>).
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
-                    <li><strong>Vantaggio:</strong> <strong>scalabilità infinita</strong>! Ingrandendo di $100\times$ il computer ricalcola la formula matematica senza mai sgranare, e il peso del file è piccolissimo.</li>
+                    <li><strong>Vantaggio:</strong> <strong>scalabilità infinita</strong>! Ingrandendo di 100× il computer ricalcola la formula matematica senza mai sgranare, e il peso del file è piccolissimo.</li>
                     <li><strong>Uso:</strong> loghi, icone, font (TrueType), progetti CAD, animazioni 2D. Formati: <code>SVG, PDF, AI, EPS, DXF</code>.</li>
                   </ul>
                 </div>
@@ -2045,7 +2045,7 @@
                   <strong>🎮 3. Il Mix Ibrido nei Videogiochi (Vettoriale + Raster):</strong>
                   Nei videogiochi 3D e 2D moderni le due tecnologie lavorano <strong>insieme</strong> nella GPU:
                   <ol style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
-                    <li><strong>Scheletro Vettoriale (Mesh Poligonale 3D):</strong> personaggi, auto ed edifici sono formati da una rete di <strong>triangoli vettoriali</strong> definiti da vertici $(x,y,z)$ che ruotano e si avvicinano alla telecamera senza perdere definizione.</li>
+                    <li><strong>Scheletro Vettoriale (Mesh Poligonale 3D):</strong> personaggi, auto ed edifici sono formati da una rete di <strong>triangoli vettoriali</strong> definiti da vertici (x, y, z) che ruotano e si avvicinano alla telecamera senza perdere definizione.</li>
                     <li><strong>Pelle Raster (Texture Mapping UV):</strong> sopra i triangoli vettoriali vengono "incollate" immagini <strong>Raster</strong> (le <em>Texture</em> di mattoni, tessuto, metallo, pelle).</li>
                     <li><strong>Rasterizzazione GPU + HUD Vettoriale:</strong> la scheda video trasforma la scena 3D nei pixel dello schermo (con <em>Anti-Aliasing</em>) e sovrappone un'interfaccia <strong>HUD vettoriale</strong> (testi, mirino, minimappa) sempre nitida in HD o 4K!</li>
                   </ol>
@@ -2144,11 +2144,11 @@
               <h3>🔊 Fisica dell'Onda Sonora: Frequenza (Bassi/Acuti) e Ampiezza</h3>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>Frequenza ($f$, misurata in Hertz = cicli/secondo):</strong> determina l'<strong>altezza tonale</strong> del suono:
+                  <strong>Frequenza (f, misurata in Hertz = cicli/secondo):</strong> determina l'<strong>altezza tonale</strong> del suono:
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
-                    <li><strong>Suoni Bassi (Gravi):</strong> bassa frequenza ($20\text{ Hz} - 300\text{ Hz}$), onde lente e distanziate (es. grancassa, basso elettrico).</li>
-                    <li><strong>Suoni Acuti (Alti):</strong> alta frequenza ($2.000\text{ Hz} - 20.000\text{ Hz}$), oscillazioni fitte e rapidissime (es. fischio, piatti, violino).</li>
-                    <li><strong>Spettro udibile umano:</strong> da $20\text{ Hz}$ a $20.000\text{ Hz}$ ($20\text{ kHz}$).</li>
+                    <li><strong>Suoni Bassi (Gravi):</strong> bassa frequenza (20 Hz – 300 Hz), onde lente e distanziate (es. grancassa, basso elettrico).</li>
+                    <li><strong>Suoni Acuti (Alti):</strong> alta frequenza (2.000 Hz – 20.000 Hz), oscillazioni fitte e rapidissime (es. fischio, piatti, violino).</li>
+                    <li><strong>Spettro udibile umano:</strong> da 20 Hz a 20.000 Hz (20 kHz).</li>
                   </ul>
                 </div>
                 <div class="concept-item orange-border">
@@ -2161,14 +2161,14 @@
               <h3>💿 Parametri Standard dell'Audio Digitale (PCM)</h3>
               <div class="concept-list">
                 <div class="concept-item bin-border">
-                  <strong>Perché il CD Audio usa $f_c = 44.100\text{ Hz}$ ($44{,}1\text{ kHz}$)?</strong>
-                  Per il <strong>Teorema di Nyquist</strong>: poiché l'orecchio umano sente fino a $f_{\max} = 20.000\text{ Hz}$, serve una frequenza di campionamento $f_c > 2 \times 20.000 = 40.000\text{ Hz}$!
+                  <strong>Perché il CD Audio usa f<sub>c</sub> = 44.100 Hz (44,1 kHz)?</strong>
+                  Per il <strong>Teorema di Nyquist</strong>: poiché l'orecchio umano sente fino a f<sub>max</sub> = 20.000 Hz, serve una frequenza di campionamento f<sub>c</sub> > 2 × 20.000 = 40.000 Hz!
                 </div>
                 <div class="concept-item hex-border">
                   <strong>Quantizzazione e Canali:</strong>
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
                     <li><strong>Profondità in bit:</strong> <code>8 bit</code> (256 livelli, fruscio udibile), <code>16 bit</code> (65.536 livelli, standard CD Hi-Fi), <code>24 bit</code> (16,7 milioni di livelli, studio professionale).</li>
-                    <li><strong>Canali ($C$):</strong> <strong>Mono ($1$)</strong>, <strong>Stereo ($2$ canali: Sinistro L + Destro R)</strong>, <strong>Surround 5.1 ($6$ canali)</strong>.</li>
+                    <li><strong>Canali (C):</strong> <strong>Mono (1)</strong>, <strong>Stereo (2 canali: Sinistro L + Destro R)</strong>, <strong>Surround 5.1 (6 canali)</strong>.</li>
                   </ul>
                 </div>
               </div>
@@ -2188,7 +2188,7 @@
                   <thead>
                     <tr>
                       <th>Qualità / Ambito</th>
-                      <th>Freq. ($f_c$)</th>
+                      <th>Freq. (f<sub>c</sub>)</th>
                       <th>Bit</th>
                       <th>Canali</th>
                       <th>Bitrate Non Compresso</th>
@@ -2308,7 +2308,7 @@
               <!-- 1. FREQUENZA DI CAMPIONAMENTO -->
               <div class="sim-control-group">
                 <div class="sim-label-row">
-                  <span>1️⃣ <strong>Frequenza di Campionamento ($f_c$):</strong></span>
+                  <span>1️⃣ <strong>Frequenza di Campionamento (f<sub>c</sub>):</strong></span>
                   <span id="audioLabFcBadge" class="base-badge badge-dec">12.000 Hz</span>
                 </div>
                 <input type="range" id="audioLabFcSlider" class="sim-slider" min="1500" max="44100" step="500" value="12000" oninput="updateAudioWaveLab()">
@@ -2323,7 +2323,7 @@
               <!-- 2. QUANTIZZAZIONE BIT -->
               <div class="sim-control-group">
                 <div class="sim-label-row">
-                  <span>2️⃣ <strong>Quantizzazione ($n$ bit per campione):</strong></span>
+                  <span>2️⃣ <strong>Quantizzazione (n bit per campione):</strong></span>
                   <span id="audioLabBitsBadge" class="base-badge badge-bin">4 bit (16 livelli)</span>
                 </div>
                 <input type="range" id="audioLabBitsSlider" class="sim-slider" min="2" max="16" step="1" value="4" oninput="updateAudioWaveLab()">
@@ -2375,7 +2375,7 @@
               <div style="display:flex; gap:0.8rem; flex-wrap:wrap; font-size:0.76rem; margin-top:0.45rem; justify-content:center;">
                 <span><strong style="color:#38bdf8;">━━ Curva Ciano:</strong> Onda "Analogica" (Bassa + Acuta)</span>
                 <span><strong style="color:#10b981;">┏━┓ Scaletta Verde:</strong> Suono Campionato &amp; Quantizzato</span>
-                <span><strong style="color:#f97316;">● Pallini Arancio:</strong> Campioni ($T_c$)</span>
+                <span><strong style="color:#f97316;">● Pallini Arancio:</strong> Campioni (T<sub>c</sub>)</span>
               </div>
               <div id="audioLabDiagnosticBox" class="formula-box" style="margin-top:0.55rem; font-size:0.79rem;"></div>
             </div>
@@ -2423,7 +2423,7 @@
               <h3>🎬 Persistenza della Visione e Frame Rate (FPS)</h3>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>Persistenza sulla Retina:</strong> l'occhio e il cervello umano trattengono un'immagine per circa $1/15$ di secondo. Se proiettiamo più di <strong>12–15 fotogrammi al secondo</strong>, non percepiamo più foto separate ma un <strong>movimento continuo</strong>!
+                  <strong>Persistenza sulla Retina:</strong> l'occhio e il cervello umano trattengono un'immagine per circa 1/15 di secondo. Se proiettiamo più di <strong>12–15 fotogrammi al secondo</strong>, non percepiamo più foto separate ma un <strong>movimento continuo</strong>!
                 </div>
                 <div class="concept-item bin-border">
                   <strong>Frame Rate (FPS — Frame Per Second):</strong> indica quanti fotogrammi vengono visualizzati in <strong>1 secondo</strong>:
@@ -2431,11 +2431,11 @@
                     <li><strong>5 – 10 FPS:</strong> movimento a scatti evidente (telecamere di sorveglianza economiche, GIF animate).</li>
                     <li><strong>24 FPS:</strong> standard storico del <strong>Cinema</strong> (effetto cinematografico con leggero <em>motion blur</em>).</li>
                     <li><strong>25 / 30 FPS:</strong> standard <strong>TV (PAL/NTSC)</strong>, streaming web e video smartphone base.</li>
-                    <li><strong>60 FPS (e 120+ FPS):</strong> <strong>alta fluidità</strong> per sport, azione rapida e <strong>Videogiochi</strong> (dimezza il tempo tra un frame e l'altro: solo $16{,}6\text{ ms}$!).</li>
+                    <li><strong>60 FPS (e 120+ FPS):</strong> <strong>alta fluidità</strong> per sport, azione rapida e <strong>Videogiochi</strong> (dimezza il tempo tra un frame e l'altro: solo 16,6 ms!).</li>
                   </ul>
                 </div>
                 <div class="concept-item orange-border">
-                  <strong>Il prezzo degli FPS (Peso del Video):</strong> raddoppiare il Frame Rate (es. da $30\text{ FPS}$ a $60\text{ FPS}$) significa memorizzare il <strong>doppio dei fotogrammi ogni secondo</strong>, raddoppiando il bitrate grezzo!
+                  <strong>Il prezzo degli FPS (Peso del Video):</strong> raddoppiare il Frame Rate (es. da 30 FPS a 60 FPS) significa memorizzare il <strong>doppio dei fotogrammi ogni secondo</strong>, raddoppiando il bitrate grezzo!
                 </div>
               </div>
             </div>
@@ -2538,8 +2538,8 @@
                 </div>
                 <div class="concept-item orange-border">
                   <strong>⚠️ Conversioni di Unità:</strong> Da <code>bit</code> a <code>Byte</code> si divide per <strong>8</strong>.<br>
-                  • Multipli <strong>Decimali SI</strong>: $\div 1000$ ($\text{kB} \rightarrow \text{MB} \rightarrow \text{GB}$).<br>
-                  • Multipli <strong>Binari IEC (Informatici)</strong>: $\div 1024$ ($\text{KiB/KB} \rightarrow \text{MiB/MB} \rightarrow \text{GiB/GB}$).
+                  • Multipli <strong>Decimali SI</strong>: ÷ 1000 (kB ? MB ? GB).<br>
+                  • Multipli <strong>Binari IEC (Informatici)</strong>: ÷ 1024 (KiB/KB ? MiB/MB ? GiB/GB).
                 </div>
               </div>
             </div>
@@ -2563,11 +2563,11 @@
               <div id="liveCalcPanelImg" class="sim-control-group">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
                   <div>
-                    <label style="font-size:0.76rem; color:var(--text-muted);">Larghezza $W$ (px):</label>
+                    <label style="font-size:0.76rem; color:var(--text-muted);">Larghezza W (px):</label>
                     <input type="number" id="lcImgW" class="search-input" value="1920" min="1" oninput="updateLiveSizeCalculator()">
                   </div>
                   <div>
-                    <label style="font-size:0.76rem; color:var(--text-muted);">Altezza $H$ (px):</label>
+                    <label style="font-size:0.76rem; color:var(--text-muted);">Altezza H (px):</label>
                     <input type="number" id="lcImgH" class="search-input" value="1080" min="1" oninput="updateLiveSizeCalculator()">
                   </div>
                 </div>
@@ -2588,7 +2588,7 @@
               <div id="liveCalcPanelAud" class="sim-control-group" style="display:none;">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
                   <div>
-                    <label style="font-size:0.76rem; color:var(--text-muted);">Frequenza $f_c$ (Hz):</label>
+                    <label style="font-size:0.76rem; color:var(--text-muted);">Frequenza f<sub>c</sub> (Hz):</label>
                     <input type="number" id="lcAudFc" class="search-input" value="44100" min="100" oninput="updateLiveSizeCalculator()">
                   </div>
                   <div>
@@ -2618,7 +2618,7 @@
               <div id="liveCalcPanelVid" class="sim-control-group" style="display:none;">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
                   <div>
-                    <label style="font-size:0.76rem; color:var(--text-muted);">Risoluzione ($W \times H$):</label>
+                    <label style="font-size:0.76rem; color:var(--text-muted);">Risoluzione (W × H):</label>
                     <select id="lcVidRes" class="topic-select-dropdown" onchange="updateLiveSizeCalculator()">
                       <option value="640x480">640 × 480 (SD VGA)</option>
                       <option value="1280x720">1280 × 720 (HD 720p)</option>
@@ -2691,13 +2691,13 @@
               <h3>🎯 Come Risolvere Senza Errori un Esercizio di TPSIT</h3>
               <div class="concept-list">
                 <div class="concept-item bin-border">
-                  <strong>Passo 1 — Estrai e normalizza i dati:</strong> converti subito i minuti in <strong>secondi</strong> ($\times 60$), i $\text{kHz}$ in <strong>$\text{Hz}$</strong> ($\times 1000$) e, se ti viene dato il numero di colori $C$ (es. 256 colori), ricava i bit per pixel con $\text{bpp} = \log_2(C)$ (es. $\log_2 256 = 8\text{ bit}$).
+                  <strong>Passo 1 — Estrai e normalizza i dati:</strong> converti subito i minuti in <strong>secondi</strong> (× 60), i kHz in <strong>Hz</strong> (× 1000) e, se ti viene dato il numero di colori C (es. 256 colori), ricava i bit per pixel con bpp = log2(C) (es. log2(256) = 8 bit).
                 </div>
                 <div class="concept-item dec-border">
-                  <strong>Passo 2 — Calcola i Byte prima di arrotondare:</strong> dividi per <code>8</code> i bit totali per ottenere i <strong>Byte</strong> (o converti subito i bit/pixel o i bit/campione in Byte: es. $24\text{ bit} = 3\text{ Byte}$, $16\text{ bit} = 2\text{ Byte}$!).
+                  <strong>Passo 2 — Calcola i Byte prima di arrotondare:</strong> dividi per <code>8</code> i bit totali per ottenere i <strong>Byte</strong> (o converti subito i bit/pixel o i bit/campione in Byte: es. 24 bit = 3 Byte, 16 bit = 2 Byte!).
                 </div>
                 <div class="concept-item orange-border">
-                  <strong>Passo 3 — Converti nel multiplo richiesto:</strong> dividi per $1024$ (per ottenere $\text{KiB / MiB / GiB}$) oppure per $1000$ (per ottenere $\text{kB / MB / GB}$). Il nostro generatore accetta <strong>entrambe le convenzioni</strong> e mostra tutti i passaggi!
+                  <strong>Passo 3 — Converti nel multiplo richiesto:</strong> dividi per 1024 (per ottenere KiB / MiB / GiB) oppure per 1000 (per ottenere kB / MB / GB). Il nostro generatore accetta <strong>entrambe le convenzioni</strong> e mostra tutti i passaggi!
                 </div>
               </div>
             </div>
@@ -2781,7 +2781,7 @@
                 <div class="concept-item orange-border">
                   <strong>2. Compressione Lossy (Irreversibile — Psico-visiva / Psico-acustica):</strong> elimina definitivamente i dettagli che l'occhio o l'orecchio umano non notano quasi, ottenendo riduzioni enormi (anche del <strong>90% – 95%</strong>!).
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
-                    <li><strong>Immagini (<code>JPEG, WebP</code>):</strong> riduce i dettagli cromatici fini su blocchi $8 \times 8$ pixel (se esageri compaiono i "quadrettoni" / artefatti JPEG).</li>
+                    <li><strong>Immagini (<code>JPEG, WebP</code>):</strong> riduce i dettagli cromatici fini su blocchi 8 × 8 pixel (se esageri compaiono i "quadrettoni" / artefatti JPEG).</li>
                     <li><strong>Audio (<code>MP3, AAC, OGG</code>):</strong> taglia le frequenze inudibili o coperte da suoni più forti (<em>mascheramento psico-acustico</em>).</li>
                     <li><strong>Video (<code>H.264/MP4, H.265/HEVC, AV1</code>):</strong> usa la <strong>compressione temporale Inter-frame</strong>: salva per intero solo alcuni fotogrammi chiave (<strong>I-Frame</strong>) e nei successivi (<strong>P-Frame / B-Frame</strong>) memorizza <em>solo i pixel che si sono mossi</em> rispetto al fotogramma precedente!</li>
                   </ul>
@@ -2885,8 +2885,8 @@
                     </tr>
                     <tr>
                       <td><strong>🖼️ Immagine Raster</strong></td>
-                      <td>Spaziale: Griglia $W \times H$ pixel (DPI/PPI)</td>
-                      <td>Cromatica: $\text{bpp} = \lceil \log_2 C \rceil$ (es. 24 bit RGB)</td>
+                      <td>Spaziale: Griglia W × H pixel (DPI/PPI)</td>
+                      <td>Cromatica: bpp = ?log2(C)? (es. 24 bit RGB)</td>
                       <td><code>(W × H × bpp) / 8</code></td>
                       <td><code>BMP, RAW</code> / <code>PNG, GIF</code> / <code>JPEG, WebP</code></td>
                     </tr>
@@ -2895,19 +2895,19 @@
                       <td>Coordinate matematiche</td>
                       <td>Precisione numeri / RGB</td>
                       <td>Dipende dal n° di forme geometriche</td>
-                      <td><code>SVG, PDF, AI, DXF</code> (Scalabile $\infty$)</td>
+                      <td><code>SVG, PDF, AI, DXF</code> (Scalabile 8)</td>
                     </tr>
                     <tr>
                       <td><strong>🎵 Suono (Audio)</strong></td>
-                      <td>Temporale: $f_c$ in Hz (es. $44.100\text{ Hz}$)</td>
-                      <td>Ampiezza: $n$ bit/campione (es. $16\text{ bit}$)</td>
+                      <td>Temporale: f<sub>c</sub> in Hz (es. 44.100 Hz)</td>
+                      <td>Ampiezza: n bit/campione (es. 16 bit)</td>
                       <td><code>(fc × bit × Canali × s) / 8</code></td>
                       <td><code>WAV, AIFF</code> / <code>FLAC</code> / <code>MP3, AAC, OGG</code></td>
                     </tr>
                     <tr>
                       <td><strong>🎬 Video</strong></td>
-                      <td>Spaziale ($W\times H$) + Temporale ($\text{FPS}$)</td>
-                      <td>Colore ($\text{bpp}$) + Audio PCM</td>
+                      <td>Spaziale (W × H) + Temporale (FPS)</td>
+                      <td>Colore (bpp) + Audio PCM</td>
                       <td><code>Peso_Frame × FPS × s (+ Audio)</code></td>
                       <td><code>AVI raw</code> / <code>FFV1</code> / <code>MP4 (H.264/H.265/AV1)</code></td>
                     </tr>
@@ -3166,7 +3166,7 @@
               </p>
               <div class="concept-list">
                 <div class="concept-item">
-                  <strong>Il Dato:</strong> è una rappresentazione grezza di un fatto tramite simboli appartenenti a un alfabeto (nei circuiti elettronici digitali l'alfabeto binario $\Sigma = \{0, 1\}$, dove <code>0</code> corrisponde a assenza di tensione/basso potenziale e <code>1</code> a presenza di tensione/alto potenziale).
+                  <strong>Il Dato:</strong> è una rappresentazione grezza di un fatto tramite simboli appartenenti a un alfabeto (nei circuiti elettronici digitali l'alfabeto binario S = {0, 1}, dove <code>0</code> corrisponde a assenza di tensione/basso potenziale e <code>1</code> a presenza di tensione/alto potenziale).
                 </div>
                 <div class="concept-item bin-border">
                   <strong>L'Informazione:</strong> è il <em>significato</em> associato al dato attraverso una <strong>convenzione o regola di codifica</strong> condivisa tra mittente e destinatario. Ad esempio, il byte <code>01000011₂</code> vale <code>67₁₀</code> come numero naturale, rappresenta la lettera <code>'C'</code> nella codifica ASCII, oppure indica una componente di colore in un pixel RGB!
@@ -3175,21 +3175,21 @@
             </div>
 
             <div class="concept-card">
-              <h3>1.2 Legge Esponenziale ($2^n$) e Formula del Logaritmo ($\lceil \log_2 M \rceil$)</h3>
+              <h3>1.2 Legge Esponenziale (2<sup>n</sup>) e Formula del Logaritmo (?log2(M)?)</h3>
               <p style="font-size:0.86rem; color:var(--text-muted);">
-                Se utilizziamo parole binarie di lunghezza fissa pari a $n$ bit, il numero massimo di informazioni distinte $M$ che possiamo codificare è:
+                Se utilizziamo parole binarie di lunghezza fissa pari a n bit, il numero massimo di informazioni distinte M che possiamo codificare è:
               </p>
               <div class="formula-box">
                 M = 2ⁿ configurazioni distinte &nbsp;(con valori interi da 0 a 2ⁿ − 1)
               </div>
               <p style="font-size:0.86rem; color:var(--text-muted);">
-                Viceversa, se dobbiamo assegnare un codice binario univoco a $M$ oggetti o simboli diversi (es. i 26 caratteri dell'alfabeto, i 12 mesi dell'anno, o 500 prodotti di un magazzino), dobbiamo scegliere la più piccola potenza di 2 maggiore o uguale a $M$:
+                Viceversa, se dobbiamo assegnare un codice binario univoco a M oggetti o simboli diversi (es. i 26 caratteri dell'alfabeto, i 12 mesi dell'anno, o 500 prodotti di un magazzino), dobbiamo scegliere la più piccola potenza di 2 maggiore o uguale a M:
               </p>
               <div class="formula-box">
                 2ⁿ ≥ M &nbsp;&nbsp;⟺&nbsp;&nbsp; n = ⌈ log₂(M) ⌉ = ⌈ ln(M) / ln(2) ⌉ bit
               </div>
               <p style="font-size:0.84rem; color:var(--text-muted);">
-                Dove le parentesi $\lceil x \rceil$ (funzione <em>ceiling</em> o parte intera superiore) indicano che se il logaritmo ha una parte decimale, bisogna <strong>sempre arrotondare all'intero successivo</strong> (perché un singolo bit non è frazionabile!). Le $2^n - M$ configurazioni in eccesso restano inutilizzate (ridondanza).
+                Dove le parentesi ?x? (funzione <em>ceiling</em> o parte intera superiore) indicano che se il logaritmo ha una parte decimale, bisogna <strong>sempre arrotondare all'intero successivo</strong> (perché un singolo bit non è frazionabile!). Le 2<sup>n</sup> - M configurazioni in eccesso restano inutilizzate (ridondanza).
               </p>
             </div>
           </div>
@@ -3200,16 +3200,16 @@
               <div class="concept-list">
                 <div class="concept-item dec-border">
                   <strong>ASCII Standard (American Standard Code for Information Interchange — 7 bit):</strong>
-                  usa <strong>7 bit</strong> per carattere, codificando $2^7 = 128$ simboli (codici da <code>0</code> a <code>127</code>):
+                  usa <strong>7 bit</strong> per carattere, codificando 27 = 128 simboli (codici da <code>0</code> a <code>127</code>):
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
                     <li><code>0 – 31</code> e <code>127</code>: caratteri di controllo non stampabili (es. <code>CR</code>, <code>LF</code>, <code>TAB</code>, <code>ESC</code>).</li>
                     <li><code>32</code>: spazio bianco (<code>' '</code>); <code>48 – 57</code>: cifre <code>'0'–'9'</code>.</li>
-                    <li><code>65 – 90</code>: lettere maiuscole <code>'A'–'Z'</code>; <code>97 – 122</code>: lettere minuscole <code>'a'–'z'</code> (nota: tra maiuscola e minuscola c'è una differenza fissa di $32 = 2^5$, cioè cambia un solo bit!).</li>
+                    <li><code>65 – 90</code>: lettere maiuscole <code>'A'–'Z'</code>; <code>97 – 122</code>: lettere minuscole <code>'a'–'z'</code> (nota: tra maiuscola e minuscola c'è una differenza fissa di 32 = 25, cioè cambia un solo bit!).</li>
                   </ul>
                 </div>
                 <div class="concept-item oct-border">
                   <strong>ASCII Esteso / ISO-8859-1 (Latin-1 — 8 bit = 1 Byte):</strong>
-                  sfrutta l'ottavo bit del byte per raddoppiare la tabella a $2^8 = 256$ caratteri (codici <code>128 – 255</code>), introducendo le lettere accentate delle lingue europee occidentali (<code>à, è, é, ì, ò, ù</code>). Tuttavia nazioni diverse usavano tabelle diverse per i codici 128–255 (es. cirillico, greco, arabo), causando testi illeggibili (<em>mojibake</em>).
+                  sfrutta l'ottavo bit del byte per raddoppiare la tabella a 28 = 256 caratteri (codici <code>128 – 255</code>), introducendo le lettere accentate delle lingue europee occidentali (<code>à, è, é, ì, ò, ù</code>). Tuttavia nazioni diverse usavano tabelle diverse per i codici 128–255 (es. cirillico, greco, arabo), causando testi illeggibili (<em>mojibake</em>).
                 </div>
                 <div class="concept-item hex-border">
                   <strong>Unicode e UTF-8 (Standard Universale del Web):</strong>
@@ -3231,7 +3231,7 @@
           <div class="example-level-card lvl-1">
             <span class="lvl-pill easy">🟢 Livello 1 • Base</span>
             <h4>Codifica dei Giorni della Settimana</h4>
-            <p style="font-size:0.84rem;">Quanti bit minimi servono per codificare i $M = 7$ giorni della settimana? Quante configurazioni avanzano?</p>
+            <p style="font-size:0.84rem;">Quanti bit minimi servono per codificare i M = 7 giorni della settimana? Quante configurazioni avanzano?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               n = ⌈log₂(7)⌉ = ⌈2,807⌉ = 3 bit<br>
               Combinazioni con 3 bit = 2³ = 8<br>
@@ -3291,10 +3291,10 @@
               <h3>2.1 Perché parliamo di "Analogico" e "Digitale"?</h3>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>Grandezza Analogica:</strong> il termine deriva dal greco <em>análogos</em> ("proporzionale"). Un microfono produce una tensione elettrica che varia in modo <strong>analogo</strong> (proporzionale e continuo) alle variazioni della pressione sonora nell'aria. Matematicamente è una funzione $s(t)$ a dominio continuo (tempo $t \in \mathbb{R}$) e codominio continuo (ampiezza $A \in \mathbb{R}$).
+                  <strong>Grandezza Analogica:</strong> il termine deriva dal greco <em>análogos</em> ("proporzionale"). Un microfono produce una tensione elettrica che varia in modo <strong>analogo</strong> (proporzionale e continuo) alle variazioni della pressione sonora nell'aria. Matematicamente è una funzione s(t) a dominio continuo (tempo t ? R) e codominio continuo (ampiezza A ? R).
                 </div>
                 <div class="concept-item bin-border">
-                  <strong>Grandezza Digitale:</strong> deriva dall'inglese <em>digit</em> ("cifra", a sua volta dal latino <em>digitus</em>, "dito" con cui si conta). Una grandezza digitale è <strong>discreta nel tempo</strong> (esiste solo in istanti $t_0, t_1, t_2 \dots$) e <strong>discreta nei valori</strong> (può assumere solo un numero finito di gradini rappresentati con cifre binarie).
+                  <strong>Grandezza Digitale:</strong> deriva dall'inglese <em>digit</em> ("cifra", a sua volta dal latino <em>digitus</em>, "dito" con cui si conta). Una grandezza digitale è <strong>discreta nel tempo</strong> (esiste solo in istanti t0, t1, t2 …) e <strong>discreta nei valori</strong> (può assumere solo un numero finito di gradini rappresentati con cifre binarie).
                 </div>
               </div>
             </div>
@@ -3328,7 +3328,7 @@
           <div class="example-level-card lvl-2">
             <span class="lvl-pill med">🟡 Livello 2 • Intermedio</span>
             <h4>Soglia di Decisione in un Ricevitore Digitale TTL/CMOS</h4>
-            <p style="font-size:0.84rem;">In una linea digitale a $5\text{ V}$, il bit <code>0</code> è trasmesso a $0\text{ V}$ e il bit <code>1</code> a $5\text{ V}$, con soglia a $2{,}5\text{ V}$. Se un disturbo aggiunge $+1{,}8\text{ V}$ a uno <code>0</code>, al ricevitore arriva $1{,}8\text{ V} < 2{,}5\text{ V}$: il circuito riconosce comunque <code>0</code> e lo rigenera a $0\text{ V}$ perfetto!</p>
+            <p style="font-size:0.84rem;">In una linea digitale a 5 V, il bit <code>0</code> è trasmesso a 0 V e il bit <code>1</code> a 5 V, con soglia a 2,5 V. Se un disturbo aggiunge +1,8 V a uno <code>0</code>, al ricevitore arriva 1,8 V < 2,5 V: il circuito riconosce comunque <code>0</code> e lo rigenera a 0 V perfetto!</p>
           </div>
           <div class="example-level-card lvl-3">
             <span class="lvl-pill hard">🔴 Livello 3 • Avanzato</span>
@@ -3358,18 +3358,18 @@
             <div class="concept-card">
               <h3>3.1 Fase 1: Il Campionamento e il Teorema di Nyquist</h3>
               <p style="font-size:0.86rem; color:var(--text-muted);">
-                Il <strong>campionamento</strong> discretizza la variabile indipendente (il <em>tempo</em> nei suoni, lo <em>spazio</em> nelle immagini). Un circuito <em>Sample &amp; Hold</em> preleva il valore istantaneo del segnale ogni $T_c$ secondi (<strong>periodo di campionamento</strong>).
+                Il <strong>campionamento</strong> discretizza la variabile indipendente (il <em>tempo</em> nei suoni, lo <em>spazio</em> nelle immagini). Un circuito <em>Sample &amp; Hold</em> preleva il valore istantaneo del segnale ogni T<sub>c</sub> secondi (<strong>periodo di campionamento</strong>).
               </p>
               <div class="formula-box">
                 fc = 1 / Tc &nbsp;[Hertz = campioni/secondo] &nbsp;&nbsp;⟷&nbsp;&nbsp; Tc = 1 / fc &nbsp;[secondi]
               </div>
               <div class="concept-item orange-border" style="margin-top:0.5rem;">
                 <strong>Teorema del Campionamento di Shannon-Nyquist:</strong><br>
-                Un segnale analogico la cui banda di frequenze è limitata superiormente da una frequenza massima $f_{\max}$ può essere ricostruito <strong>esattamente</strong> a partire dai suoi campioni se e solo se la frequenza di campionamento $f_c$ è <strong>almeno il doppio di $f_{\max}$</strong>:
+                Un segnale analogico la cui banda di frequenze è limitata superiormente da una frequenza massima f<sub>max</sub> può essere ricostruito <strong>esattamente</strong> a partire dai suoi campioni se e solo se la frequenza di campionamento f<sub>c</sub> è <strong>almeno il doppio di f<sub>max</sub></strong>:
                 <div class="formula-box" style="margin-top:0.35rem;">
                   fc ≥ 2 · fmax &nbsp;&nbsp;(dove fN = 2 · fmax è detta Frequenza di Nyquist)
                 </div>
-                Se invece campioniamo troppo lentamente ($f_c < 2 \cdot f_{\max}$), le oscillazioni rapide non vengono catturate correttamente e nel segnale ricostruito compaiono <strong>false frequenze più basse</strong> che non esistevano nell'originale: questo grave difetto prende il nome di <strong>Aliasing</strong> (visibile anche al cinema quando le ruote di un'auto sembrano girare al contrario!).
+                Se invece campioniamo troppo lentamente (f<sub>c</sub> < 2 · f<sub>max</sub>), le oscillazioni rapide non vengono catturate correttamente e nel segnale ricostruito compaiono <strong>false frequenze più basse</strong> che non esistevano nell'originale: questo grave difetto prende il nome di <strong>Aliasing</strong> (visibile anche al cinema quando le ruote di un'auto sembrano girare al contrario!).
               </div>
             </div>
           </div>
@@ -3378,13 +3378,13 @@
             <div class="concept-card">
               <h3>3.2 Fase 2 &amp; 3: Quantizzazione ed Errore di Quantizzazione</h3>
               <p style="font-size:0.86rem; color:var(--text-muted);">
-                Dopo il campionamento, i campioni (impulsi <em>PAM — Pulse Amplitude Modulation</em>) hanno ancora ampiezze reali con infinite cifre decimali. La <strong>quantizzazione</strong> divide l'escursione di tensione $[V_{\min}, V_{\max}]$ in $L = 2^n$ intervalli uguali di ampiezza $\Delta$ (<strong>passo di quantizzazione</strong>):
+                Dopo il campionamento, i campioni (impulsi <em>PAM — Pulse Amplitude Modulation</em>) hanno ancora ampiezze reali con infinite cifre decimali. La <strong>quantizzazione</strong> divide l'escursione di tensione [V<sub>min</sub>, V<sub>max</sub>] in L = 2<sup>n</sup> intervalli uguali di ampiezza ? (<strong>passo di quantizzazione</strong>):
               </p>
               <div class="formula-box">
                 L = 2ⁿ livelli &nbsp;&nbsp;|&nbsp;&nbsp; Δ = (Vmax − Vmin) / 2ⁿ &nbsp;&nbsp;|&nbsp;&nbsp; Errore max |e| ≤ Δ / 2
               </div>
               <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.45rem;">
-                L'<strong>errore di quantizzazione</strong> è irreversibile, ma aumentando il numero di bit $n$ per campione (es. da 8 bit a 16 o 24 bit), il passo $\Delta$ diventa piccolissimo e l'errore diventa impercettibile ai sensi umani. Infine, la <strong>Codifica Binaria (PCM)</strong> associa a ciascun campione il numero binario del livello corrispondente.
+                L'<strong>errore di quantizzazione</strong> è irreversibile, ma aumentando il numero di bit n per campione (es. da 8 bit a 16 o 24 bit), il passo ? diventa piccolissimo e l'errore diventa impercettibile ai sensi umani. Infine, la <strong>Codifica Binaria (PCM)</strong> associa a ciascun campione il numero binario del livello corrispondente.
               </p>
             </div>
           </div>
@@ -3395,7 +3395,7 @@
           <div class="example-level-card lvl-1">
             <span class="lvl-pill easy">🟢 Livello 1 • Base</span>
             <h4>Periodo e Frequenza di Campionamento</h4>
-            <p style="font-size:0.84rem;">Un sensore campiona un segnale ogni $T_c = 0{,}25\text{ ms}$ ($0{,}00025\text{ s}$). Qual è la frequenza di campionamento $f_c$?</p>
+            <p style="font-size:0.84rem;">Un sensore campiona un segnale ogni T<sub>c</sub> = 0,25 ms (0,00025 s). Qual è la frequenza di campionamento f<sub>c</sub>?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               fc = 1 / Tc = 1 / 0,00025 s = 4.000 Hz = 4 kHz
             </div>
@@ -3403,7 +3403,7 @@
           <div class="example-level-card lvl-2">
             <span class="lvl-pill med">🟡 Livello 2 • Intermedio</span>
             <h4>Applicazione del Teorema di Nyquist</h4>
-            <p style="font-size:0.84rem;">La voce umana telefonica viene filtrata tra $300\text{ Hz}$ e $f_{\max} = 3.400\text{ Hz}$. Qual è la frequenza minima di campionamento per non avere aliasing?</p>
+            <p style="font-size:0.84rem;">La voce umana telefonica viene filtrata tra 300 Hz e f<sub>max</sub> = 3.400 Hz. Qual è la frequenza minima di campionamento per non avere aliasing?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               fc_min = 2 · fmax = 2 × 3.400 Hz = 6.800 Hz<br>
               (Nelle telecomunicazioni telefoniche si usa infatti lo standard fc = 8.000 Hz!)
@@ -3411,8 +3411,8 @@
           </div>
           <div class="example-level-card lvl-3">
             <span class="lvl-pill hard">🔴 Livello 3 • Avanzato</span>
-            <h4>Passo di Quantizzazione $\Delta$ di un ADC</h4>
-            <p style="font-size:0.84rem;">Un convertitore ADC lavora tra $V_{\min} = 0\text{ V}$ e $V_{\max} = 5\text{ V}$ con risoluzione $n = 10\text{ bit}$. Calcola il numero di livelli $L$, il passo $\Delta$ e l'errore massimo.</p>
+            <h4>Passo di Quantizzazione ? di un ADC</h4>
+            <p style="font-size:0.84rem;">Un convertitore ADC lavora tra V<sub>min</sub> = 0 V e V<sub>max</sub> = 5 V con risoluzione n = 10 bit. Calcola il numero di livelli L, il passo ? e l'errore massimo.</p>
             <div class="formula-box" style="font-size:0.78rem;">
               L = 2¹⁰ = 1.024 livelli<br>
               Δ = 5 V / 1024 ≈ 0,00488 V = 4,88 mV<br>
@@ -3446,14 +3446,14 @@
               </p>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>Campionamento Spaziale:</strong> sovrapponiamo all'immagine una griglia regolare di $W$ colonne per $H$ righe. Ogni quadratino della griglia è un campione spaziale chiamato <strong>Pixel</strong> (contrazione di <em>Picture Element</em>). Per ciascun pixel si preleva il colore medio di quell'area.
+                  <strong>Campionamento Spaziale:</strong> sovrapponiamo all'immagine una griglia regolare di W colonne per H righe. Ogni quadratino della griglia è un campione spaziale chiamato <strong>Pixel</strong> (contrazione di <em>Picture Element</em>). Per ciascun pixel si preleva il colore medio di quell'area.
                 </div>
                 <div class="concept-item orange-border">
                   <strong>Cosa succede se il campionamento spaziale è troppo basso?</strong><br>
-                  Passando nell'immagine del Prof. Cristaldi da $320 \times 320$ a $32 \times 32$ o $16 \times 16$ pixel, i dettagli fini (gli occhiali, le scritte sulla lavagna, i tratti del viso) vanno persi perché cadono dentro un unico grande quadretto: si verifica la <strong>sgranatura (Pixelation / Effetto Mosaico)</strong> e la <strong>scalettatura dei bordi obliqui (Aliasing spaziale / Jaggies)</strong>.
+                  Passando nell'immagine del Prof. Cristaldi da 320 × 320 a 32 × 32 o 16 × 16 pixel, i dettagli fini (gli occhiali, le scritte sulla lavagna, i tratti del viso) vanno persi perché cadono dentro un unico grande quadretto: si verifica la <strong>sgranatura (Pixelation / Effetto Mosaico)</strong> e la <strong>scalettatura dei bordi obliqui (Aliasing spaziale / Jaggies)</strong>.
                 </div>
                 <div class="concept-item bin-border">
-                  <strong>Densità di Risoluzione (PPI / DPI):</strong> misura quanti pixel (o punti di stampa) sono contenuti in <strong>1 pollice lineare ($1\text{ inch} = 2{,}54\text{ cm}$)</strong>:
+                  <strong>Densità di Risoluzione (PPI / DPI):</strong> misura quanti pixel (o punti di stampa) sono contenuti in <strong>1 pollice lineare (1 inch = 2,54 cm)</strong>:
                   <div class="formula-box" style="margin-top:0.3rem;">
                     Larghezza_px = Larghezza_pollici × DPI &nbsp;&nbsp;(con 1 pollice = 2,54 cm)
                   </div>
@@ -3467,18 +3467,18 @@
               <h3>4.2 Quantizzazione Cromatica: Bit Depth e Posterizzazione</h3>
               <div class="concept-list">
                 <div class="concept-item hex-border">
-                  <strong>Profondità di Colore (Bit per Pixel — bpp):</strong> stabilisce quanti bit vengono dedicati a ciascun pixel per codificarne il colore ($C = 2^{\text{bpp}}$ colori possibili):
+                  <strong>Profondità di Colore (Bit per Pixel — bpp):</strong> stabilisce quanti bit vengono dedicati a ciascun pixel per codificarne il colore (C = 2<sup>bpp</sup> colori possibili):
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
-                    <li><strong>1 bpp ($2^1 = 2$ colori):</strong> solo Bianco (<code>1</code>) o Nero (<code>0</code>).</li>
-                    <li><strong>4 bpp ($2^4 = 16$ colori / grigi):</strong> vecchie icone VGA.</li>
-                    <li><strong>8 bpp ($2^8 = 256$ colori o 256 livelli di grigio):</strong> 1 Byte per pixel (formato GIF o foto B/N).</li>
-                    <li><strong>24 bpp TrueColor ($2^{24} = 16.777.216$ colori):</strong> 3 Byte per pixel (8 bit Rosso + 8 bit Verde + 8 bit Blu).</li>
+                    <li><strong>1 bpp (2¹ = 2 colori):</strong> solo Bianco (<code>1</code>) o Nero (<code>0</code>).</li>
+                    <li><strong>4 bpp (24 = 16 colori / grigi):</strong> vecchie icone VGA.</li>
+                    <li><strong>8 bpp (28 = 256 colori o 256 livelli di grigio):</strong> 1 Byte per pixel (formato GIF o foto B/N).</li>
+                    <li><strong>24 bpp TrueColor (2²4 = 16.777.216 colori):</strong> 3 Byte per pixel (8 bit Rosso + 8 bit Verde + 8 bit Blu).</li>
                     <li><strong>32 bpp RGBA:</strong> 24 bit RGB + 8 bit di canale Alpha (trasparenza).</li>
                   </ul>
                 </div>
                 <div class="concept-item rose-border">
                   <strong>Cosa succede se la quantizzazione cromatica è troppo bassa?</strong><br>
-                  Riducendo nel laboratorio i bit del ritratto del Prof. Cristaldi da $24\text{ bit}$ a $6\text{ bit}$ o $3\text{ bit}$ (mantenendo alta la risoluzione $320\times320$), i contorni rimangono nitidi ma le sfumature morbide del viso e della parete si spezzano in chiazze uniformi a gradini bruschi: questo difetto si chiama <strong>Posterizzazione (o False Contouring)</strong>!
+                  Riducendo nel laboratorio i bit del ritratto del Prof. Cristaldi da 24 bit a 6 bit o 3 bit (mantenendo alta la risoluzione 320 × 320), i contorni rimangono nitidi ma le sfumature morbide del viso e della parete si spezzano in chiazze uniformi a gradini bruschi: questo difetto si chiama <strong>Posterizzazione (o False Contouring)</strong>!
                 </div>
               </div>
             </div>
@@ -3490,7 +3490,7 @@
           <div class="example-level-card lvl-1">
             <span class="lvl-pill easy">🟢 Livello 1 • Base</span>
             <h4>Dalla Profondità in Bit al Numero di Colori</h4>
-            <p style="font-size:0.84rem;">Nel simulatore del Prof. Cristaldi impostiamo la quantizzazione a $6\text{ bit per pixel}$ (2 bit per R, 2 per G, 2 per B). Quanti colori distinti può avere la tavolozza?</p>
+            <p style="font-size:0.84rem;">Nel simulatore del Prof. Cristaldi impostiamo la quantizzazione a 6 bit per pixel (2 bit per R, 2 per G, 2 per B). Quanti colori distinti può avere la tavolozza?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               N° Colori = 2⁶ = 64 colori totali<br>
               (infatti 2² livelli Rosso × 2² Verde × 2² Blu = 4 × 4 × 4 = 64)
@@ -3499,7 +3499,7 @@
           <div class="example-level-card lvl-2">
             <span class="lvl-pill med">🟡 Livello 2 • Intermedio</span>
             <h4>Scansione di una Fotografia con i DPI</h4>
-            <p style="font-size:0.84rem;">Una fototessera del professore misura $5{,}08\text{ cm} \times 5{,}08\text{ cm}$ e viene acquisita con uno scanner a $300\text{ DPI}$ a $24\text{ bit}$. Quanti pixel ha l'immagine e quanto pesa?</p>
+            <p style="font-size:0.84rem;">Una fototessera del professore misura 5,08 cm × 5,08 cm e viene acquisita con uno scanner a 300 DPI a 24 bit. Quanti pixel ha l'immagine e quanto pesa?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Pollici = 5,08 cm / 2,54 = 2 pollici × 2 pollici<br>
               Risoluzione = (2 × 300) × (2 × 300) = 600 × 600 = 360.000 pixel<br>
@@ -3509,7 +3509,7 @@
           <div class="example-level-card lvl-3">
             <span class="lvl-pill hard">🔴 Livello 3 • Avanzato</span>
             <h4>Risparmio di Memoria al Variare di Campionamento e Quantizzazione</h4>
-            <p style="font-size:0.84rem;">Di quante volte si riduce il peso in memoria del ritratto del Prof. Cristaldi passando da $320\times320$ a $24\text{ bit}$ a una versione $80\times80$ in scala di grigi a $4\text{ bit}$?</p>
+            <p style="font-size:0.84rem;">Di quante volte si riduce il peso in memoria del ritratto del Prof. Cristaldi passando da 320 × 320 a 24 bit a una versione 80 × 80 in scala di grigi a 4 bit?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Peso Iniziale = 320 × 320 × 24 bit = 2.457.600 bit (307.200 Byte)<br>
               Peso Finale = 80 × 80 × 4 bit = 25.600 bit (3.200 Byte)<br>
@@ -3550,7 +3550,7 @@
                   <tbody>
                     <tr>
                       <td><strong>Cosa memorizza</strong></td>
-                      <td>Il colore di ogni singolo pixel in una matrice $W \times H$</td>
+                      <td>Il colore di ogni singolo pixel in una matrice W × H</td>
                       <td>Formule matematiche di primitive (punti, linee, curve di Bézier, poligoni)</td>
                     </tr>
                     <tr>
@@ -3560,7 +3560,7 @@
                     </tr>
                     <tr>
                       <td><strong>Peso in memoria</strong></td>
-                      <td>Dipende da $W \times H \times \text{bpp}$ (anche molti MB)</td>
+                      <td>Dipende da W × H × bpp (anche molti MB)</td>
                       <td>Dipende solo dal numero di forme geometriche (pochi KB)</td>
                     </tr>
                     <tr>
@@ -3587,13 +3587,13 @@
               </p>
               <div class="concept-list">
                 <div class="concept-item bin-border">
-                  <strong>1. Geometria Vettoriale (Mesh Poligonale 3D):</strong> gli oggetti e i personaggi 3D sono modellati come un "reticolo metallico" (<em>Wireframe</em>) composto da migliaia di <strong>triangoli vettoriali</strong> definiti da coordinate $(x, y, z)$. Quando ti avvicini a un oggetto nel gioco, la GPU ricalcola le coordinate matematiche dei vertici: per questo la sagoma 3D può ruotare e scalare fluidamente!
+                  <strong>1. Geometria Vettoriale (Mesh Poligonale 3D):</strong> gli oggetti e i personaggi 3D sono modellati come un "reticolo metallico" (<em>Wireframe</em>) composto da migliaia di <strong>triangoli vettoriali</strong> definiti da coordinate (x, y, z). Quando ti avvicini a un oggetto nel gioco, la GPU ricalcola le coordinate matematiche dei vertici: per questo la sagoma 3D può ruotare e scalare fluidamente!
                 </div>
                 <div class="concept-item dec-border">
                   <strong>2. Immagini Raster per i Dettagli (Texture UV &amp; Materiali):</strong> un poligono vettoriale da solo apparirebbe piatto e finto. Per dargli realismo fotorealistico, sopra ciascun triangolo vettoriale viene "stesa" un'immagine <strong>Raster</strong> chiamata <strong>Texture</strong> (più mappe raster speciali come la <em>Normal Map</em> che simula le rugosità 3D alla luce).
                 </div>
                 <div class="concept-item hex-border">
-                  <strong>3. Rasterizzazione GPU, Anti-Aliasing e HUD Vettoriale:</strong> poichè il monitor è una matrice raster di pixel (es. $1920\times1080$), la scheda video esegue la <strong>Rasterizzazione</strong> (60 o 144 volte al secondo!), trasformando la scena 3D in pixel, smussando i bordi con l'<strong>Anti-Aliasing</strong> e disegnando in primo piano l'<strong>interfaccia utente (HUD: testi, salute, minimappa) in formato Vettoriale</strong> così che sia nitida su qualsiasi schermo!
+                  <strong>3. Rasterizzazione GPU, Anti-Aliasing e HUD Vettoriale:</strong> poichè il monitor è una matrice raster di pixel (es. 1920 × 1080), la scheda video esegue la <strong>Rasterizzazione</strong> (60 o 144 volte al secondo!), trasformando la scena 3D in pixel, smussando i bordi con l'<strong>Anti-Aliasing</strong> e disegnando in primo piano l'<strong>interfaccia utente (HUD: testi, salute, minimappa) in formato Vettoriale</strong> così che sia nitida su qualsiasi schermo!
                 </div>
               </div>
             </div>
@@ -3605,7 +3605,7 @@
           <div class="example-level-card lvl-1">
             <span class="lvl-pill easy">🟢 Livello 1 • Base</span>
             <h4>Codice SVG Vettoriale vs Immagine BMP</h4>
-            <p style="font-size:0.84rem;">Un cerchio rosso di raggio $500\text{ px}$ in formato raster <code>BMP</code> ($1000\times1000$ a 24 bit) pesa $3.000.000\text{ Byte}$ ($3\text{ MB}$). In formato vettoriale <code>SVG</code> basta una riga di testo da <strong>65 Byte</strong>:</p>
+            <p style="font-size:0.84rem;">Un cerchio rosso di raggio 500 px in formato raster <code>BMP</code> (1000 × 1000 a 24 bit) pesa 3.000.000 Byte (3 MB). In formato vettoriale <code>SVG</code> basta una riga di testo da <strong>65 Byte</strong>:</p>
             <div class="formula-box" style="font-size:0.76rem;">
               &lt;svg&gt;&lt;circle cx="500" cy="500" r="500" fill="red"/&gt;&lt;/svg&gt;
             </div>
@@ -3613,7 +3613,7 @@
           <div class="example-level-card lvl-2">
             <span class="lvl-pill med">🟡 Livello 2 • Intermedio</span>
             <h4>Canale Alpha (RGBA a 32 bit) per gli Sprite 2D</h4>
-            <p style="font-size:0.84rem;">In un videogioco 2D, il personaggio (<em>Sprite</em>) di $128\times128\text{ px}$ non deve mostrare un rettangolo di sfondo attorno a sé: usa la codifica <strong>RGBA a 32 bit</strong> (24 bit colore + 8 bit trasparenza Alpha). Quanto pesa in RAM?</p>
+            <p style="font-size:0.84rem;">In un videogioco 2D, il personaggio (<em>Sprite</em>) di 128 × 128 px non deve mostrare un rettangolo di sfondo attorno a sé: usa la codifica <strong>RGBA a 32 bit</strong> (24 bit colore + 8 bit trasparenza Alpha). Quanto pesa in RAM?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Peso = 128 × 128 × 4 Byte = 65.536 Byte = 64 KiB
             </div>
@@ -3621,7 +3621,7 @@
           <div class="example-level-card lvl-3">
             <span class="lvl-pill hard">🔴 Livello 3 • Avanzato</span>
             <h4>Memoria VRAM per le Texture di un Modello 3D</h4>
-            <p style="font-size:0.84rem;">Un personaggio 3D in un videogioco ha una mesh vettoriale di 20.000 triangoli e utilizza 3 mappe raster 4K ($2048\times2048\text{ px}$ a 24 bit): <em>Diffuse</em>, <em>Normal</em> e <em>Roughness</em>. Quanto pesano le 3 texture non compresse in VRAM?</p>
+            <p style="font-size:0.84rem;">Un personaggio 3D in un videogioco ha una mesh vettoriale di 20.000 triangoli e utilizza 3 mappe raster 4K (2048 × 2048 px a 24 bit): <em>Diffuse</em>, <em>Normal</em> e <em>Roughness</em>. Quanto pesano le 3 texture non compresse in VRAM?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               1 Texture = 2048 × 2048 × 3 Byte = 12.582.912 Byte (12 MiB)<br>
               3 Texture = 12 MiB × 3 = 36 MiB in VRAM
@@ -3655,14 +3655,14 @@
               </p>
               <div class="concept-list">
                 <div class="concept-item dec-border">
-                  <strong>Componenti Basse (Suoni Gravi, $20\text{ Hz} - 350\text{ Hz}$):</strong> hanno un periodo $T = 1/f$ lungo; sull'oscilloscopio formano un'onda ampia e dolce che varia lentamente nel tempo.
+                  <strong>Componenti Basse (Suoni Gravi, 20 Hz – 350 Hz):</strong> hanno un periodo T = 1/f lungo; sull'oscilloscopio formano un'onda ampia e dolce che varia lentamente nel tempo.
                 </div>
                 <div class="concept-item orange-border">
-                  <strong>Componenti Acute (Suoni Alti e Armoniche, $2.000\text{ Hz} - 20.000\text{ Hz}$):</strong> hanno un periodo brevissimo; sull'oscilloscopio appaiono come <strong>increspature fittissime e veloci</strong> sovrapposte all'onda bassa.
+                  <strong>Componenti Acute (Suoni Alti e Armoniche, 2.000 Hz – 20.000 Hz):</strong> hanno un periodo brevissimo; sull'oscilloscopio appaiono come <strong>increspature fittissime e veloci</strong> sovrapposte all'onda bassa.
                 </div>
                 <div class="concept-item rose-border">
-                  <strong>Perché le componenti acute sono le prime a soffrire se riduciamo il campionamento $f_c$?</strong><br>
-                  Come mostrato nel <strong>Laboratorio Audio della Slide 7</strong>, se un suono contiene una nota bassa a $250\text{ Hz}$ e una nota acuta a $2.400\text{ Hz}$, per il Teorema di Nyquist serve almeno $f_c \ge 2 \times 2.400 = 4.800\text{ Hz}$. Se abbassiamo $f_c$ a $2.500\text{ Hz}$, i campioni sono ancora sufficienti per seguire l'onda lenta a $250\text{ Hz}$ ($2500 > 2\times250$), ma sono <strong>troppo distanti tra loro per catturare le creste rapide a $2.400\text{ Hz}$</strong>: il suono campionato diventa cupo, ovattato o produce fischi spurii di <strong>aliasing</strong>!
+                  <strong>Perché le componenti acute sono le prime a soffrire se riduciamo il campionamento f<sub>c</sub>?</strong><br>
+                  Come mostrato nel <strong>Laboratorio Audio della Slide 7</strong>, se un suono contiene una nota bassa a 250 Hz e una nota acuta a 2.400 Hz, per il Teorema di Nyquist serve almeno f<sub>c</sub> = 2 × 2.400 = 4.800 Hz. Se abbassiamo f<sub>c</sub> a 2.500 Hz, i campioni sono ancora sufficienti per seguire l'onda lenta a 250 Hz (2500 > 2 × 250), ma sono <strong>troppo distanti tra loro per catturare le creste rapide a 2.400 Hz</strong>: il suono campionato diventa cupo, ovattato o produce fischi spurii di <strong>aliasing</strong>!
                 </div>
               </div>
             </div>
@@ -3673,11 +3673,11 @@
               <h3>6.2 Effetto della Quantizzazione sul Suono e Calcolo del Bitrate</h3>
               <div class="concept-list">
                 <div class="concept-item bin-border">
-                  <strong>Effetto della Quantizzazione ($n$ bit per campione):</strong>
+                  <strong>Effetto della Quantizzazione (n bit per campione):</strong>
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
-                    <li>A <strong>16 bit ($65.536$ livelli, CD Audio)</strong> o <strong>24 bit ($16{,}7$ milioni di livelli)</strong> i gradini sull'asse verticale sono così microscopici che l'onda ricostruita dal DAC coincide quasi perfettamente con la curva analogica (rapporto segnale/rumore $\text{SNR} \approx 96\text{ dB}$ a 16 bit).</li>
-                    <li>A <strong>8 bit ($256$ livelli)</strong> si avverte un leggero fruscio di fondo continuo (<em>rumore di quantizzazione</em>).</li>
-                    <li>A <strong>4 bit ($16$ livelli) o 2 bit ($4$ livelli)</strong> l'onda diventa una scaletta grossolana e il suono assume un timbro metallico e graffiante tipico dei vecchi videogiochi arcade anni '80 (effetto <em>Bitcrusher</em>).</li>
+                    <li>A <strong>16 bit (65.536 livelli, CD Audio)</strong> o <strong>24 bit (16,7 milioni di livelli)</strong> i gradini sull'asse verticale sono così microscopici che l'onda ricostruita dal DAC coincide quasi perfettamente con la curva analogica (rapporto segnale/rumore SNR ˜ 96 dB a 16 bit).</li>
+                    <li>A <strong>8 bit (256 livelli)</strong> si avverte un leggero fruscio di fondo continuo (<em>rumore di quantizzazione</em>).</li>
+                    <li>A <strong>4 bit (16 livelli) o 2 bit (4 livelli)</strong> l'onda diventa una scaletta grossolana e il suono assume un timbro metallico e graffiante tipico dei vecchi videogiochi arcade anni '80 (effetto <em>Bitcrusher</em>).</li>
                   </ul>
                 </div>
                 <div class="concept-item hex-border">
@@ -3697,7 +3697,7 @@
           <div class="example-level-card lvl-1">
             <span class="lvl-pill easy">🟢 Livello 1 • Base</span>
             <h4>Registrazione Vocale Mono a 8 kHz</h4>
-            <p style="font-size:0.84rem;">Un messaggio vocale telefonico dura $30\text{ secondi}$, è campionato a $f_c = 8.000\text{ Hz}$, quantizzato a $8\text{ bit}$ in modalità <strong>Mono (1 canale)</strong>. Quanto pesa in Byte e KB?</p>
+            <p style="font-size:0.84rem;">Un messaggio vocale telefonico dura 30 secondi, è campionato a f<sub>c</sub> = 8.000 Hz, quantizzato a 8 bit in modalità <strong>Mono (1 canale)</strong>. Quanto pesa in Byte e KB?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Poiché 8 bit = 1 Byte/campione:<br>
               Peso = 8.000 × 1 Byte × 1 ch × 30 s = 240.000 Byte<br>
@@ -3707,7 +3707,7 @@
           <div class="example-level-card lvl-2">
             <span class="lvl-pill med">🟡 Livello 2 • Intermedio</span>
             <h4>Brano Musicale in Qualità CD Audio (4 minuti)</h4>
-            <p style="font-size:0.84rem;">Calcola il peso in MB e MiB di una canzone non compressa (formato <code>WAV</code>) lunga $4\text{ minuti}$ in qualità CD ($44.100\text{ Hz}$, $16\text{ bit}$, <strong>Stereo = 2 canali</strong>).</p>
+            <p style="font-size:0.84rem;">Calcola il peso in MB e MiB di una canzone non compressa (formato <code>WAV</code>) lunga 4 minuti in qualità CD (44.100 Hz, 16 bit, <strong>Stereo = 2 canali</strong>).</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Tempo = 4 × 60 = 240 s &nbsp;|&nbsp; 16 bit = 2 Byte/campione<br>
               Byte/s = 44.100 × 2 B × 2 ch = 176.400 Byte/s<br>
@@ -3718,7 +3718,7 @@
           <div class="example-level-card lvl-3">
             <span class="lvl-pill hard">🔴 Livello 3 • Avanzato</span>
             <h4>Verifica di Nyquist su un Suono Composto (Basso + Acuto)</h4>
-            <p style="font-size:0.84rem;">Un segnale acustico è dato da $x(t) = \sin(2\pi \cdot 300 t) + 0{,}5\sin(2\pi \cdot 6500 t)$. Se lo campioniamo a $f_c = 10\text{ kHz}$, quale componente subisce aliasing? Quale $f_c$ minima occorre?</p>
+            <p style="font-size:0.84rem;">Un segnale acustico è dato da x(t) = sin(2p · 300t) + 0,5 · sin(2p · 6500t). Se lo campioniamo a f<sub>c</sub> = 10 kHz, quale componente subisce aliasing? Quale f<sub>c</sub> minima occorre?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               • Componente bassa f₁ = 300 Hz ➔ 2·f₁ = 600 Hz ≤ 10.000 Hz (OK!)<br>
               • Componente acuta f₂ = 6.500 Hz ➔ 2·f₂ = 13.000 Hz &gt; 10.000 Hz (ALIASING!)<br>
@@ -3748,7 +3748,7 @@
             <div class="concept-card">
               <h3>7.1 Dal Fotogramma Statico al Movimento: Il Ruolo degli FPS</h3>
               <p style="font-size:0.86rem; color:var(--text-muted); margin-bottom:0.5rem;">
-                Un video digitale unisce una <strong>dimensione spaziale</strong> (la risoluzione $W \times H$ di ciascun fotogramma o <em>frame</em>) e una <strong>dimensione temporale</strong>: il <strong>Frame Rate (FPS — Frame Per Second)</strong>.
+                Un video digitale unisce una <strong>dimensione spaziale</strong> (la risoluzione W × H di ciascun fotogramma o <em>frame</em>) e una <strong>dimensione temporale</strong>: il <strong>Frame Rate (FPS — Frame Per Second)</strong>.
               </p>
               <div class="step-table-wrap">
                 <table class="step-table">
@@ -3788,7 +3788,7 @@
                     <tr>
                       <td><strong>120 / 240 FPS</strong></td>
                       <td>8,33 / 4,17 ms</td>
-                      <td><strong>eSports &amp; Slow Motion:</strong> reattività estrema o registrazione per rallentatore ($4\times\text{–}8\times$)</td>
+                      <td><strong>eSports &amp; Slow Motion:</strong> reattività estrema o registrazione per rallentatore (4× – 8×)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -3803,10 +3803,10 @@
                 <div class="concept-item dec-border">
                   <strong>Le Risoluzioni Video più diffuse (Formato 16:9):</strong>
                   <ul style="margin:0.25rem 0 0 1.1rem; font-size:0.83rem;">
-                    <li><strong>HD Ready (720p):</strong> $1280 \times 720 = 921.600\text{ pixel}$ ($\sim 0{,}92\text{ MP}$).</li>
-                    <li><strong>Full HD (1080p):</strong> $1920 \times 1080 = 2.073.600\text{ pixel}$ ($\sim 2{,}07\text{ MP}$).</li>
-                    <li><strong>QHD (2K / 1440p):</strong> $2560 \times 1440 = 3.686.400\text{ pixel}$ ($\sim 3{,}69\text{ MP}$).</li>
-                    <li><strong>4K Ultra HD (2160p):</strong> $3840 \times 2160 = 8.294.400\text{ pixel}$ ($\sim 8{,}29\text{ MP}$, esattamente $4\times$ il Full HD!).</li>
+                    <li><strong>HD Ready (720p):</strong> 1280 × 720 = 921.600 pixel (~0,92 MP).</li>
+                    <li><strong>Full HD (1080p):</strong> 1920 × 1080 = 2.073.600 pixel (~2,07 MP).</li>
+                    <li><strong>QHD (2K / 1440p):</strong> 2560 × 1440 = 3.686.400 pixel (~3,69 MP).</li>
+                    <li><strong>4K Ultra HD (2160p):</strong> 3840 × 2160 = 8.294.400 pixel (~8,29 MP, esattamente 4× il Full HD!).</li>
                   </ul>
                 </div>
                 <div class="concept-item hex-border">
@@ -3826,7 +3826,7 @@
           <div class="example-level-card lvl-1">
             <span class="lvl-pill easy">🟢 Livello 1 • Base</span>
             <h4>Numero Totale di Fotogrammi in un Video</h4>
-            <p style="font-size:0.84rem;">Quanti singoli fotogrammi (immagini) sono contenuti in una clip video di $2\text{ minuti}$ registrata a $30\text{ FPS}$? E se fosse registrata a $60\text{ FPS}$?</p>
+            <p style="font-size:0.84rem;">Quanti singoli fotogrammi (immagini) sono contenuti in una clip video di 2 minuti registrata a 30 FPS? E se fosse registrata a 60 FPS?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Tempo = 2 × 60 = 120 secondi<br>
               • A 30 FPS: 120 s × 30 frame/s = 3.600 fotogrammi<br>
@@ -3836,7 +3836,7 @@
           <div class="example-level-card lvl-2">
             <span class="lvl-pill med">🟡 Livello 2 • Intermedio</span>
             <h4>Flusso Dati al Secondo (MB/s) di un Video HD</h4>
-            <p style="font-size:0.84rem;">Una telecamera industriale acquisisce video non compresso a risoluzione $1000\times800\text{ px}$, TrueColor ($24\text{ bit}$) a $25\text{ FPS}$. Quanti MB al secondo produce?</p>
+            <p style="font-size:0.84rem;">Una telecamera industriale acquisisce video non compresso a risoluzione 1000 × 800 px, TrueColor (24 bit) a 25 FPS. Quanti MB al secondo produce?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               1 Frame = 1000 × 800 × 3 Byte = 2.400.000 Byte (2,4 MB)<br>
               Flusso al secondo = 2,4 MB × 25 FPS = 60 MB/s (57,22 MiB/s)
@@ -3845,7 +3845,7 @@
           <div class="example-level-card lvl-3">
             <span class="lvl-pill hard">🔴 Livello 3 • Avanzato</span>
             <h4>Registrazione in Slow-Motion da 120 FPS a 24 FPS</h4>
-            <p style="font-size:0.84rem;">Registri un'azione sportiva di $5\text{ secondi}$ a $120\text{ FPS}$ e poi la riproduci al cinema a $24\text{ FPS}$ senza scartare alcun fotogramma. Quanto dura il video rallentato?</p>
+            <p style="font-size:0.84rem;">Registri un'azione sportiva di 5 secondi a 120 FPS e poi la riproduci al cinema a 24 FPS senza scartare alcun fotogramma. Quanto dura il video rallentato?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Fotogrammi catturati = 5 s × 120 FPS = 600 frame<br>
               Durata in riproduzione a 24 FPS = 600 / 24 = 25 secondi (Rallentatore 5×!)
@@ -3872,9 +3872,9 @@
         <div class="chapter-Grid">
           <div>
             <div class="concept-card">
-              <h3>8.1 Prefissi Decimali SI ($10^3 = 1000$) vs Prefissi Binari IEC ($2^{10} = 1024$)</h3>
+              <h3>8.1 Prefissi Decimali SI (10³ = 1000) vs Prefissi Binari IEC (2¹° = 1024)</h3>
               <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.45rem;">
-                Ricorda sempre che <strong>$1\text{ Byte (B)} = 8\text{ bit (b)}$</strong>. Per i multipli del Byte esistono due standard che ogni studente di TPSIT deve padroneggiare:
+                Ricorda sempre che <strong>1 Byte (B) = 8 bit (b)</strong>. Per i multipli del Byte esistono due standard che ogni studente di TPSIT deve padroneggiare:
               </p>
               <div class="step-table-wrap">
                 <table class="step-table">
@@ -3888,23 +3888,23 @@
                   <tbody>
                     <tr>
                       <td><strong>Kilo / Kibi</strong></td>
-                      <td>$1\text{ kB} = 10^3 = 1.000\text{ B}$</td>
-                      <td>$1\text{ KiB (o KB)} = 2^{10} = 1.024\text{ B}$</td>
+                      <td>1 kB = 10³ = 1.000 B</td>
+                      <td>1 KiB (o KB) = 2¹° = 1.024 B</td>
                     </tr>
                     <tr>
                       <td><strong>Mega / Mebi</strong></td>
-                      <td>$1\text{ MB} = 10^6 = 1.000.000\text{ B}$</td>
-                      <td>$1\text{ MiB (o MB)} = 2^{20} = 1.048.576\text{ B}$</td>
+                      <td>1 MB = 106 = 1.000.000 B</td>
+                      <td>1 MiB (o MB) = 2²° = 1.048.576 B</td>
                     </tr>
                     <tr>
                       <td><strong>Giga / Gibi</strong></td>
-                      <td>$1\text{ GB} = 10^9 = 1.000.000.000\text{ B}$</td>
-                      <td>$1\text{ GiB (o GB)} = 2^{30} = 1.073.741.824\text{ B}$</td>
+                      <td>1 GB = 10? = 1.000.000.000 B</td>
+                      <td>1 GiB (o GB) = 2³° = 1.073.741.824 B</td>
                     </tr>
                     <tr>
                       <td><strong>Tera / Tebi</strong></td>
-                      <td>$1\text{ TB} = 10^{12}\text{ B}$</td>
-                      <td>$1\text{ TiB (o TB)} = 2^{40}\text{ B}$</td>
+                      <td>1 TB = 10¹² B</td>
+                      <td>1 TiB (o TB) = 24° B</td>
                     </tr>
                   </tbody>
                 </table>
@@ -3952,7 +3952,7 @@
             <span class="lvl-pill easy">🟢 Esercizio Svolto 1 • Immagine con Tavolozza</span>
             <h4>Immagine a 16 Colori vs TrueColor</h4>
             <p style="font-size:0.84rem;">
-              <strong>Traccia:</strong> Calcola la dimensione in Byte e in KiB di un'immagine raster di $800 \times 600$ pixel dotata di una tavolozza di $16$ colori.
+              <strong>Traccia:</strong> Calcola la dimensione in Byte e in KiB di un'immagine raster di 800 × 600 pixel dotata di una tavolozza di 16 colori.
             </p>
             <div class="formula-box" style="font-size:0.78rem;">
               <strong>Svolgimento:</strong><br>
@@ -3968,7 +3968,7 @@
             <span class="lvl-pill med">🟡 Esercizio Svolto 2 • Audio Stereo + Compressione</span>
             <h4>Registrazione Podcast e Compressione MP3</h4>
             <p style="font-size:0.84rem;">
-              <strong>Traccia:</strong> Un'intervista audio stereo (2 canali) dura $2\text{ minuti e } 30\text{ secondi}$, è campionata a $48\text{ kHz}$ con quantizzazione a $16\text{ bit}$. Calcola il peso non compresso e il peso dopo una compressione MP3 con rapporto $10:1$.
+              <strong>Traccia:</strong> Un'intervista audio stereo (2 canali) dura 2 minuti e 30 secondi, è campionata a 48 kHz con quantizzazione a 16 bit. Calcola il peso non compresso e il peso dopo una compressione MP3 con rapporto 10:1.
             </p>
             <div class="formula-box" style="font-size:0.78rem;">
               <strong>Svolgimento:</strong><br>
@@ -3983,7 +3983,7 @@
             <span class="lvl-pill hard">🔴 Esercizio Svolto 3 • Video Completo + Audio</span>
             <h4>Filmato Full HD con Traccia Audio CD</h4>
             <p style="font-size:0.84rem;">
-              <strong>Traccia:</strong> Un video di $10\text{ secondi}$ ha risoluzione $1920\times1080$, profondità $24\text{ bit}$, $30\text{ FPS}$ ed è accompagnato da una traccia audio stereo a $44.100\text{ Hz}$ e $16\text{ bit}$. Calcola il peso totale non compresso.
+              <strong>Traccia:</strong> Un video di 10 secondi ha risoluzione 1920 × 1080, profondità 24 bit, 30 FPS ed è accompagnato da una traccia audio stereo a 44.100 Hz e 16 bit. Calcola il peso totale non compresso.
             </p>
             <div class="formula-box" style="font-size:0.78rem;">
               <strong>Svolgimento:</strong><br>
@@ -4041,10 +4041,10 @@
               <h3>10.2 Compressione Lossy (Psico-Percettiva) &amp; Inter-Frame Video</h3>
               <div class="concept-list">
                 <div class="concept-item orange-border">
-                  <strong>JPEG (Immagini):</strong> converte l'immagine da RGB a <strong>YCbCr</strong> (separando la Luminanza $Y$, a cui l'occhio umano è sensibilissimo, dalla Crominanza $Cb, Cr$, che viene sottocampionata), divide l'immagine in blocchi di $8 \times 8$ pixel, applica la trasformata <strong>DCT (Discrete Cosine Transform)</strong> e scarta le alte frequenze spaziali.
+                  <strong>JPEG (Immagini):</strong> converte l'immagine da RGB a <strong>YCbCr</strong> (separando la Luminanza Y, a cui l'occhio umano è sensibilissimo, dalla Crominanza Cb, Cr, che viene sottocampionata), divide l'immagine in blocchi di 8 × 8 pixel, applica la trasformata <strong>DCT (Discrete Cosine Transform)</strong> e scarta le alte frequenze spaziali.
                 </div>
                 <div class="concept-item rose-border">
-                  <strong>MP3 / AAC (Audio):</strong> utilizza un <strong>modello psico-acustico</strong> dell'orecchio umano: elimina i suoni sotto la soglia di udibilità e sfrutta il <em>mascheramento in frequenza</em> (se un colpo di batteria forte a $1000\text{ Hz}$ copre un suono debole a $1050\text{ Hz}$, il suono debole non viene memorizzato!).
+                  <strong>MP3 / AAC (Audio):</strong> utilizza un <strong>modello psico-acustico</strong> dell'orecchio umano: elimina i suoni sotto la soglia di udibilità e sfrutta il <em>mascheramento in frequenza</em> (se un colpo di batteria forte a 1000 Hz copre un suono debole a 1050 Hz, il suono debole non viene memorizzato!).
                 </div>
                 <div class="concept-item dec-border">
                   <strong>H.264 / H.265 / AV1 (Compressione Temporale Video):</strong>
@@ -4074,8 +4074,8 @@
           </div>
           <div class="example-level-card lvl-2">
             <span class="lvl-pill med">🟡 Livello 2 • Intermedio</span>
-            <h4>Calcolo del Peso Compresso dato il Rapporto $R_c$</h4>
-            <p style="font-size:0.84rem;">Una foto RAW non compressa da $12\text{ Megapixel}$ ($4000\times3000$) a $24\text{ bit}$ viene salvata in JPEG con fattore di compressione $15:1$. Quanto pesa il file JPEG finale?</p>
+            <h4>Calcolo del Peso Compresso dato il Rapporto R<sub>c</sub></h4>
+            <p style="font-size:0.84rem;">Una foto RAW non compressa da 12 Megapixel (4000 × 3000) a 24 bit viene salvata in JPEG con fattore di compressione 15:1. Quanto pesa il file JPEG finale?</p>
             <div class="formula-box" style="font-size:0.78rem;">
               Peso non compresso = 12.000.000 × 3 Byte = 36.000.000 Byte (36 MB)<br>
               Peso JPEG (15:1) = 36 MB / 15 = 2,4 MB (Risparmio del 93,3%!)
@@ -4270,7 +4270,7 @@
     const badge = document.getElementById('bitCalcResultBadge');
     const out = document.getElementById('bitCalcFormulaOut');
     if (isNaN(rawM) || rawM < 2) {
-      out.innerHTML = 'Inserisci un numero di elementi $M \\ge 2$.';
+      out.innerHTML = 'Inserisci un numero di elementi M ≥ 2.';
       return;
     }
     const exactLog = Math.log2(rawM);
@@ -5283,12 +5283,12 @@
     if (fc < nyquistHigh) {
       diagHtml = `
         ⚠️ <strong style="color:var(--rose-pink);">ATTENZIONE — ALIASING SULLA COMPONENTE ACUTA!</strong><br>
-        La nota acuta è a <code>${fHigh} Hz</code> (richiede per Nyquist $f_c \\ge 2 \\times ${fHigh} = ${nyquistHigh}\\text{ Hz}$), ma stai campionando a soli <code>${fc} Hz</code>! L'onda bassa (<code>${fLow} Hz</code>) sopravvive, ma le oscillazioni acute vengono perse o distorte!<br>
+        La nota acuta è a <code>${fHigh} Hz</code> (richiede per Nyquist f<sub>c</sub> ≥ 2 × ${fHigh} = ${nyquistHigh} Hz), ma stai campionando a soli <code>${fc} Hz</code>! L'onda bassa (<code>${fLow} Hz</code>) sopravvive, ma le oscillazioni acute vengono perse o distorte!<br>
         Bitrate Mono attuale: <strong>${bitrateKbps} kbps</strong> (${samplePoints.length} campioni in 8 ms).
       `;
     } else {
       diagHtml = `
-        ✅ <strong style="color:var(--bin-green);">Teorema di Nyquist Rispettato ($f_c = ${fc}\\text{ Hz} \\ge ${nyquistHigh}\\text{ Hz}$):</strong><br>
+        ✅ <strong style="color:var(--bin-green);">Teorema di Nyquist Rispettato (f<sub>c</sub> = ${fc} Hz ≥ ${nyquistHigh} Hz):</strong><br>
         Sia la componente <strong>bassa (${fLow} Hz)</strong> sia la componente <strong>acuta (${fHigh} Hz)</strong> vengono catturate correttamente! ${nBits <= 4 ? '⚠️ Nota però la scaletta dovuta ai pochi bit di quantizzazione (' + nBits + ' bit).' : ''}<br>
         Bitrate Mono attuale: <strong>${bitrateKbps} kbps</strong> (${samplePoints.length} campioni in 8 ms).
       `;
@@ -5741,13 +5741,13 @@
           statementHtml: `Calcola la dimensione in <strong>Byte</strong> di un'immagine raster non compressa con risoluzione <strong>${w} × ${h} pixel</strong> e profondità di colore pari a <strong>${bpp} bit per pixel</strong>.`,
           stepsHtml: `
             <strong>1) Dati del problema:</strong><br>
-            • Risoluzione spaziale: $W = ${w}\\text{ px}$, $H = ${h}\\text{ px}$<br>
-            • Profondità colore: $\\text{bpp} = ${bpp}\\text{ bit/pixel}$ (${bpp / 8} Byte/pixel)<br><br>
+            • Risoluzione spaziale: W = ${w} px, H = ${h} px<br>
+            • Profondità colore: bpp = ${bpp} bit/pixel (${bpp / 8} Byte/pixel)<br><br>
             <strong>2) Calcolo numero totale di Pixel:</strong><br>
-            $\\text{Pixel} = ${w} \\times ${h} = ${(w * h).toLocaleString('it-IT')}\\text{ pixel}$<br><br>
-            <strong>3) Calcolo dimensione in bit e in Byte ($\\div 8$):</strong><br>
-            $\\text{Bit totali} = ${(w * h).toLocaleString('it-IT')} \\times ${bpp} = ${(w * h * bpp).toLocaleString('it-IT')}\\text{ bit}$<br>
-            $\\text{Dimensione [Byte]} = ${(w * h * bpp).toLocaleString('it-IT')} / 8 =$ <strong style="color:var(--bin-green);">${bytes.toLocaleString('it-IT')} Byte</strong>
+            Pixel = ${w} × ${h} = ${(w * h).toLocaleString('it-IT')} pixel<br><br>
+            <strong>3) Calcolo dimensione in bit e in Byte (÷ 8):</strong><br>
+            Bit totali = ${(w * h).toLocaleString('it-IT')} × ${bpp} = ${(w * h * bpp).toLocaleString('it-IT')} bit<br>
+            Dimensione [Byte] = ${(w * h * bpp).toLocaleString('it-IT')} / 8 = <strong style="color:var(--bin-green);">${bytes.toLocaleString('it-IT')} Byte</strong>
           `
         };
       } else if (diff === 'med') {
@@ -5768,10 +5768,10 @@
           statementHtml: `Un'immagine bitmap ha dimensioni <strong>${w} × ${h} pixel</strong> e utilizza una tavolozza di <strong>${colorChoice.colors.toLocaleString('it-IT')} colori</strong>. Calcola lo spazio occupato in <strong>KB (o KiB)</strong>.`,
           stepsHtml: `
             <strong>1) Ricavo la profondità di colore dai ${colorChoice.colors.toLocaleString('it-IT')} colori:</strong><br>
-            $\\text{bpp} = \\log_2(${colorChoice.colors}) =$ <strong>${colorChoice.bpp} bit/pixel</strong><br><br>
+            bpp = log₂(${colorChoice.colors}) = <strong>${colorChoice.bpp} bit/pixel</strong><br><br>
             <strong>2) Calcolo i Byte totali:</strong><br>
-            $\\text{Pixel} = ${w} \\times ${h} = ${(w * h).toLocaleString('it-IT')}\\text{ px}$<br>
-            $\\text{Byte} = (${(w * h).toLocaleString('it-IT')} \\times ${colorChoice.bpp}) / 8 =$ <strong>${bytes.toLocaleString('it-IT')} Byte</strong><br><br>
+            Pixel = ${w} × ${h} = ${(w * h).toLocaleString('it-IT')} px<br>
+            Byte = (${(w * h).toLocaleString('it-IT')} × ${colorChoice.bpp}) / 8 = <strong>${bytes.toLocaleString('it-IT')} Byte</strong><br><br>
             <strong>3) Equivalenza in KB / KiB:</strong><br>
             • Standard Binario (÷ 1024): <strong style="color:var(--bin-green);">${ansKiB.toFixed(2)} KiB</strong><br>
             • Standard Decimale (÷ 1000): <strong style="color:var(--accent);">${ansKB.toFixed(2)} kB</strong>
@@ -5792,9 +5792,9 @@
           statementHtml: `Una fotografia TrueColor (<strong>24 bit/pixel</strong>) di risoluzione <strong>${w} × ${h} pixel</strong> viene compressa in formato JPEG con un <strong>rapporto di compressione ${ratio}:1</strong>. Quanto pesa il file compresso in <strong>MB (o MiB)</strong>?`,
           stepsHtml: `
             <strong>1) Peso dell'immagine NON compressa (24 bit = 3 Byte/px):</strong><br>
-            $\\text{Byte grezzi} = ${w} \\times ${h} \\times 3\\text{ Byte} = ${rawBytes.toLocaleString('it-IT')}\\text{ Byte}$<br><br>
+            Byte grezzi = ${w} × ${h} × 3 Byte = ${rawBytes.toLocaleString('it-IT')} Byte<br><br>
             <strong>2) Applicazione del rapporto di compressione ${ratio}:1:</strong><br>
-            $\\text{Byte compressi} = ${rawBytes.toLocaleString('it-IT')} / ${ratio} = ${compBytes.toLocaleString('it-IT')}\\text{ Byte}$<br><br>
+            Byte compressi = ${rawBytes.toLocaleString('it-IT')} / ${ratio} = ${compBytes.toLocaleString('it-IT')} Byte<br><br>
             <strong>3) Conversione in MB / MiB:</strong><br>
             • Standard Decimale (÷ 1.000.000): <strong style="color:var(--bin-green);">${ansMB.toFixed(2)} MB</strong><br>
             • Standard Binario (÷ 1.048.576): <strong style="color:var(--accent);">${ansMiB.toFixed(2)} MiB</strong>
@@ -5816,12 +5816,12 @@
           statementHtml: `Calcola la dimensione in <strong>Byte</strong> di una registrazione audio non compressa della durata di <strong>${sec} secondi</strong>, campionata a <strong>${fc.toLocaleString('it-IT')} Hz</strong>, quantizzata a <strong>${bits} bit</strong> in modalità <strong>${ch === 1 ? 'Mono (1 canale)' : 'Stereo (2 canali)'}</strong>.`,
           stepsHtml: `
             <strong>1) Dati del problema:</strong><br>
-            $f_c = ${fc}\\text{ Hz}$, Profondità $= ${bits}\\text{ bit}$ (${bits / 8} Byte/campione), Canali $= ${ch}$, Durata $t = ${sec}\\text{ s}$<br><br>
+            f<sub>c</sub> = ${fc} Hz, Profondità = ${bits} bit (${bits / 8} Byte/campione), Canali = ${ch}, Durata t = ${sec} s<br><br>
             <strong>2) Calcolo del Bitrate e dei Byte al secondo:</strong><br>
-            $\\text{Bitrate} = ${fc} \\times ${bits} \\times ${ch} = ${(fc * bits * ch).toLocaleString('it-IT')}\\text{ bit/s}$<br>
-            $\\text{Byte/s} = ${(fc * bits * ch).toLocaleString('it-IT')} / 8 = ${((fc * bits * ch) / 8).toLocaleString('it-IT')}\\text{ Byte/s}$<br><br>
+            Bitrate = ${fc} × ${bits} × ${ch} = ${(fc * bits * ch).toLocaleString('it-IT')} bit/s<br>
+            Byte/s = ${(fc * bits * ch).toLocaleString('it-IT')} / 8 = ${((fc * bits * ch) / 8).toLocaleString('it-IT')} Byte/s<br><br>
             <strong>3) Dimensione totale per ${sec} secondi:</strong><br>
-            $\\text{Dimensione} = ${((fc * bits * ch) / 8).toLocaleString('it-IT')} \\times ${sec} =$ <strong style="color:var(--bin-green);">${bytes.toLocaleString('it-IT')} Byte</strong>
+            Dimensione = ${((fc * bits * ch) / 8).toLocaleString('it-IT')} × ${sec} = <strong style="color:var(--bin-green);">${bytes.toLocaleString('it-IT')} Byte</strong>
           `
         };
       } else if (diff === 'med') {
@@ -5839,11 +5839,11 @@
           statementHtml: `Un brano musicale <strong>Stereo (2 canali)</strong> dura <strong>${mins} minuti</strong> ed è campionato a <strong>${fcKhz} kHz</strong> con quantizzazione a <strong>16 bit</strong>. Calcola il peso del file WAV in <strong>MB (o MiB)</strong>.`,
           stepsHtml: `
             <strong>1) Normalizzazione dei dati nelle unità base:</strong><br>
-            • Frequenza: $f_c = ${fcKhz}\\text{ kHz} = ${fc.toLocaleString('it-IT')}\\text{ Hz}$<br>
-            • Durata: $t = ${mins}\\text{ min} \\times 60 = ${sec}\\text{ secondi}$<br>
-            • Quantizzazione: $16\\text{ bit} = 2\\text{ Byte}$ per campione × $2\\text{ canali}$<br><br>
+            • Frequenza: f<sub>c</sub> = ${fcKhz} kHz = ${fc.toLocaleString('it-IT')} Hz<br>
+            • Durata: t = ${mins} min × 60 = ${sec} secondi<br>
+            • Quantizzazione: 16 bit = 2 Byte per campione × 2 canali<br><br>
             <strong>2) Calcolo dei Byte totali:</strong><br>
-            $\\text{Byte} = ${fc.toLocaleString('it-IT')} \\times 2\\text{ B} \\times 2\\text{ ch} \\times ${sec}\\text{ s} = ${bytes.toLocaleString('it-IT')}\\text{ Byte}$<br><br>
+            Byte = ${fc.toLocaleString('it-IT')} × 2 B × 2 ch × ${sec} s = ${bytes.toLocaleString('it-IT')} Byte<br><br>
             <strong>3) Conversione in MB / MiB:</strong><br>
             • Standard Decimale (÷ 10⁶): <strong style="color:var(--bin-green);">${ansMB.toFixed(2)} MB</strong><br>
             • Standard Binario (÷ 1024²): <strong style="color:var(--accent);">${ansMiB.toFixed(2)} MiB</strong>
@@ -5866,9 +5866,9 @@
           statementHtml: `Una traccia audio da studio <strong>Stereo (2 canali)</strong> a <strong>48 kHz</strong> e <strong>24 bit</strong> dura <strong>${sec / 60} minuti</strong>. Viene compressa riducendo la dimensione del <strong>${savingPct}%</strong>. Quanto pesa il file compresso in <strong>MB (o MiB)</strong>?`,
           stepsHtml: `
             <strong>1) Calcolo peso audio NON compresso (24 bit = 3 Byte):</strong><br>
-            $\\text{Byte grezzi} = 48.000 \\times 3\\text{ B} \\times 2\\text{ ch} \\times ${sec}\\text{ s} = ${rawBytes.toLocaleString('it-IT')}\\text{ Byte}$<br><br>
+            Byte grezzi = 48.000 × 3 B × 2 ch × ${sec} s = ${rawBytes.toLocaleString('it-IT')} Byte<br><br>
             <strong>2) Applicazione del risparmio del ${savingPct}% (resta il ${100 - savingPct}%):</strong><br>
-            $\\text{Byte compressi} = ${rawBytes.toLocaleString('it-IT')} \\times ${(1 - savingPct / 100).toFixed(2)} = ${compBytes.toLocaleString('it-IT')}\\text{ Byte}$<br><br>
+            Byte compressi = ${rawBytes.toLocaleString('it-IT')} × ${(1 - savingPct / 100).toFixed(2)} = ${compBytes.toLocaleString('it-IT')} Byte<br><br>
             <strong>3) In MB / MiB:</strong><br>
             • Standard Decimale (÷ 10⁶): <strong style="color:var(--bin-green);">${ansMB.toFixed(2)} MB</strong><br>
             • Standard Binario (÷ 1024²): <strong style="color:var(--accent);">${ansMiB.toFixed(2)} MiB</strong>
@@ -5893,11 +5893,11 @@
           statementHtml: `Calcola il peso in <strong>MB (o MiB)</strong> di una clip video muta non compressa di <strong>${sec} secondi</strong>, con risoluzione <strong>${w} × ${h} pixel</strong>, profondità colore <strong>24 bit</strong> e frame rate di <strong>${fps} FPS</strong>.`,
           stepsHtml: `
             <strong>1) Peso di 1 singolo fotogramma (24 bit = 3 Byte/pixel):</strong><br>
-            $\\text{Peso 1 Frame} = ${w} \\times ${h} \\times 3\\text{ B} = ${frameBytes.toLocaleString('it-IT')}\\text{ Byte}$<br><br>
+            Peso 1 Frame = ${w} × ${h} × 3 B = ${frameBytes.toLocaleString('it-IT')} Byte<br><br>
             <strong>2) Numero totale di fotogrammi in ${sec} secondi a ${fps} FPS:</strong><br>
-            $\\text{N° Frame} = ${fps} \\times ${sec} = ${fps * sec}\\text{ fotogrammi}$<br><br>
+            N° Frame = ${fps} × ${sec} = ${fps * sec} fotogrammi<br><br>
             <strong>3) Peso Totale Video:</strong><br>
-            $\\text{Byte totali} = ${frameBytes.toLocaleString('it-IT')} \\times ${fps * sec} = ${totalBytes.toLocaleString('it-IT')}\\text{ Byte}$<br>
+            Byte totali = ${frameBytes.toLocaleString('it-IT')} × ${fps * sec} = ${totalBytes.toLocaleString('it-IT')} Byte<br>
             • In MB decimali (÷ 10⁶): <strong style="color:var(--bin-green);">${ansMB.toFixed(2)} MB</strong><br>
             • In MiB binari (÷ 1024²): <strong style="color:var(--accent);">${ansMiB.toFixed(2)} MiB</strong>
           `
@@ -5920,10 +5920,10 @@
             : `Un filmato HD (<strong>1280 × 720 px</strong>) a <strong>24 bit</strong> viene registrato a <strong>${fps} FPS</strong> per <strong>${sec} secondi</strong>. Quanto spazio non compresso occupa in <strong>MB (o MiB)</strong>?`,
           stepsHtml: `
             <strong>1) Peso di 1 Fotogramma HD (1280×720 × 3 Byte):</strong><br>
-            $\\text{Frame} = 1280 \\times 720 \\times 3 = 2.764.800\\text{ Byte}$<br><br>
+            Frame = 1280 × 720 × 3 = 2.764.800 Byte<br><br>
             <strong>2) Peso Video non compresso (${fps} FPS × ${sec} s = ${fps * sec} frame):</strong><br>
-            $\\text{Byte grezzi} = 2.764.800 \\times ${fps * sec} = ${rawBytes.toLocaleString('it-IT')}\\text{ Byte}$<br>
-            ${ratio > 1 ? `<br><strong>3) Compressione ${ratio}:1:</strong><br>$\\text{Byte compressi} = ${rawBytes.toLocaleString('it-IT')} / ${ratio} = ${finalBytes.toLocaleString('it-IT')}\\text{ Byte}$<br>` : ''}<br>
+            Byte grezzi = 2.764.800 × ${fps * sec} = ${rawBytes.toLocaleString('it-IT')} Byte<br>
+            ${ratio > 1 ? `<br><strong>3) Compressione ${ratio}:1:</strong><br>Byte compressi = ${rawBytes.toLocaleString('it-IT')} / ${ratio} = ${finalBytes.toLocaleString('it-IT')} Byte<br>` : ''}<br>
             <strong>Risultato finale:</strong><br>
             • Standard Decimale (÷ 10⁶): <strong style="color:var(--bin-green);">${ansMB.toFixed(2)} MB</strong><br>
             • Standard Binario (÷ 1024²): <strong style="color:var(--accent);">${ansMiB.toFixed(2)} MiB</strong>
