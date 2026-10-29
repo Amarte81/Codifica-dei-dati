@@ -1,8 +1,8 @@
-# Lezione Interattiva sulla Codifica dei Dati (TPSIT — 3° Anno ITIS)
+# Lezione Interattiva sulla Codifica dei Dati Multimediali (TPSIT — 3° Anno ITIS)
 
 Materiale didattico interattivo completo sulla **Codifica dei Dati e delle Informazioni Multimediali** pensato per gli studenti del **3° anno di TPSIT (Tecnologie e Progettazione di Sistemi Informatici e di Telecomunicazioni)** degli Istituti Tecnici Industriali.
 
-🌐 **Sito Live (GitHub Pages):** [https://amarte81.github.io/Codifica-dei-dati/](https://amarte81.github.io/Codifica-dei-dati/)
+🌐 **Sito Live (GitHub Pages):** [https://amarte81.github.io/Codifica-dei-dati-Multimediali/](https://amarte81.github.io/Codifica-dei-dati-Multimediali/)
 
 Progettato con doppia ergonomia:
 - 🖥️ **PC / LIM (Formato 16:9):** navigazione **a Slide interattive** affiancate su due colonne, scorciatoie da tastiera (`←` / `→` / `Esc`) e barra di avanzamento.
