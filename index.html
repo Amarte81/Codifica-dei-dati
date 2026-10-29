@@ -700,6 +700,9 @@
       border-radius: 10px;
       padding: 0.75rem 0.9rem;
       margin-bottom: 0.65rem;
+      box-sizing: border-box;
+      max-width: 100%;
+      overflow: hidden;
     }
 
     .sim-label-row {
@@ -1015,6 +1018,17 @@
       font-weight: 700;
       outline: none;
       transition: var(--transition);
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+
+    .topic-select-dropdown {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
     }
 
     .answer-input {
@@ -1902,16 +1916,16 @@
                   <span>2️⃣ <strong>Quantizzazione Cromatica</strong> (Profondità Bit / Livelli Colore):</span>
                   <span id="cristaldiBitBadge" class="base-badge badge-bin">6 bit (64 colori)</span>
                 </div>
-                <select id="cristaldiQuantSelect" class="topic-select-dropdown" onchange="updateCristaldiImageLab()" style="margin-bottom:0.4rem;">
-                  <option value="24">24 bit TrueColor (8 bit×3 RGB = 16.777.216 colori — Nessuna posterizzazione)</option>
-                  <option value="12">12 bit HighColor (4 bit×3 RGB = 4.096 colori)</option>
-                  <option value="9">9 bit RGB (3 bit×3 RGB = 512 colori)</option>
-                  <option value="6" selected>6 bit RGB (2 bit×3 RGB = 64 colori — Posterizzazione evidente!)</option>
-                  <option value="3">3 bit RGB Primari (1 bit×3 RGB = 8 soli colori!)</option>
-                  <option value="gray8">8 bit Scala di Grigi (256 livelli di luminosità)</option>
-                  <option value="gray4">4 bit Scala di Grigi (16 livelli di grigio)</option>
-                  <option value="gray2">2 bit Scala di Grigi (4 soli livelli di grigio!)</option>
-                  <option value="bw1">1 bit Bicromatico B/N (2 soli livelli: Bianco 1 o Nero 0)</option>
+                <select id="cristaldiQuantSelect" class="topic-select-dropdown" onchange="updateCristaldiImageLab()" style="margin-bottom:0.4rem; width:100%; max-width:100%; box-sizing:border-box;">
+                  <option value="24">24 bit TrueColor (16,7M colori)</option>
+                  <option value="12">12 bit HighColor (4.096 colori)</option>
+                  <option value="9">9 bit RGB (512 colori)</option>
+                  <option value="6" selected>6 bit RGB (64 colori)</option>
+                  <option value="3">3 bit RGB Primari (8 colori)</option>
+                  <option value="gray8">8 bit Scala Grigi (256 liv.)</option>
+                  <option value="gray4">4 bit Scala Grigi (16 liv.)</option>
+                  <option value="gray2">2 bit Scala Grigi (4 liv.)</option>
+                  <option value="bw1">1 bit Bicromatico B/N (2 liv.)</option>
                 </select>
 
                 <!-- PRESET DIDATTICI RAPIDI -->
@@ -1926,7 +1940,7 @@
               <!-- CARICA FOTO PERSONALIZZATA -->
               <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.45rem; margin-top:0.55rem;">
                 <label class="btn btn-sm" style="cursor:pointer;">
-                  📷 Carica altra foto del Prof. Cristaldi
+                  📷 Carica altra foto
                   <input type="file" id="cristaldiCustomUpload" accept="image/*" style="display:none;" onchange="handleCristaldiUpload(event)">
                 </label>
                 <button class="btn btn-sm" onclick="resetDefaultCristaldiPortrait()">🔄 Ritratto Predefinito Prof. Cristaldi</button>
